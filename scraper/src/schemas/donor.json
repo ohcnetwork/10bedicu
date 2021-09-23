@@ -1,6 +1,6 @@
 {
-    "uuid": "donor_1",
-    "name": "Vinod Khosla",
-    "location": "Menlo Park, California",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/3/37/Vinod_Khosla%2C_Web_2.0_Conference.jpg"
+    "uuid": "UUID | STRING",
+    "name": "STRING",
+    "location": "STRING",
+    "image": "URL"
 }

@@ -1,8 +1,8 @@
 {
-    "name": "Telangana",
-    "number_of_hospitals": 40,
-    "path": "telangana",
-    "pmu_summary": "The project management unit (PMU) ",
-    "state_logo": "https://www.telangana.gov.in/Style%20Library/GoT/Content/img/logo.png",
-    "state_summary": "We are creating 10-Bed-ICU Units"
+    "name": "STRING",
+    "number_of_hospitals": 0,
+    "path": "STRING",
+    "pmu_summary": "TEXT",
+    "state_logo": "URL",
+    "state_summary": "TEXT"
 }
