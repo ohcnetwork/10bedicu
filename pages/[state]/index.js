@@ -137,13 +137,13 @@ export default function State({ state }) {
                         ? "Donors"
                         : "Donor"}
                     </h2>
-                    <div className="mt-4 grid grid-cols-1 gap-0.5 md:grid-cols-3">
+                    <div className="mt-4 flex flex-col md:flex-row item-center justify-center">
                       {splitText(hospital.donors).map((donorSlug, index) => {
                         const donor = findDonor(donorSlug);
                         return (
                           <div
                             key={index}
-                            className="col-span-1 flex flex-col justify-center py-8 px-8"
+                            className="md:w-1/3 flex flex-col flex-wrap justify-center py-8 px-8 "
                           >
                             <div className="aspect-w-1 aspect-h-1">
                               <img
