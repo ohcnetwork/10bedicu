@@ -12,6 +12,11 @@ def dump_data(filename, data):
         json_file.write(json.dumps(data, sort_keys=True))
 
 
+def get_json_data(filename):
+    with open(f"{ROOT_DIR}/{filename}", "r") as json_file:
+        return json.loads(json_file.read())
+
+
 def get_data(csv_url, header=False):
     # Makes a request to published sheet and
     # parses it as CSV and returns a list of rows
