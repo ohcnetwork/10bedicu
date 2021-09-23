@@ -1,14 +1,23 @@
 [
   {
     "name": "Telangana",
+    "number_of_hospitals": "40",
     "path": "telangana",
-    "hospitals": "40",
-    "summary": "We are creating 10-Bed-ICU Units in 30 districts of Telangana. Several of the new districts do not yet have any ICU beds even in the Secondary District Hospital. We are also currently planning to launch an IT system to help with the emergency triage process"
+    "state_logo": "https://www.telangana.gov.in/Style%20Library/GoT/Content/img/logo.png",
+    "state_summary": "We are creating 10-Bed-ICU Units in 30 districts of Telangana. Several of the new districts do not yet have any ICU beds even in the Secondary District Hospital. We are also currently planning to launch an IT system to help with the emergency triage process"
   },
   {
     "name": "Karnataka",
+    "number_of_hospitals": "40",
     "path": "karnataka",
-    "hospitals": "40",
-    "summary": "Through your donations we are providing PSA Oxygen Generators to 146 Taluka hospitals in rural Karnataka districts. This will provide over 50 Oxygen beds for handling moderate to sever cases of Covid patients - the absolute need of the hour."
+    "state_logo": "https://www.karnataka.gov.in/frontend/assets/img/Seal_of_Karnataka.png",
+    "state_summary": "Through your donations we are providing PSA Oxygen Generators to 146 Taluka hospitals in rural Karnataka districts. This will provide over 50 Oxygen beds for handling moderate to sever cases of Covid patients - the absolute need of the hour."
+  },
+  {
+    "name": "Manipur",
+    "number_of_hospitals": "10",
+    "path": "manipur",
+    "state_logo": "https://upload.wikimedia.org/wikipedia/en/c/ce/Manipur_emblem.png",
+    "state_summary": "Through your donations we are providing PSA Oxygen Generators to 146 Taluka hospitals in rural Karnataka districts. This will provide over 50 Oxygen beds for handling moderate to sever cases of Covid patients - the absolute need of the hour."
   }
 ]
