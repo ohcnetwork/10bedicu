@@ -1,4 +1,4 @@
-import HomeStatesList from "../components/HomeStatesList";
+import HomeStatesList from "@components/HomeStatesList";
 
 const HomePage = () => {
   return (

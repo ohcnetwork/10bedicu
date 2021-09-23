@@ -9,7 +9,7 @@ const Footer = () => {
             >
                 <span>Powered by</span>
                 <img
-                    src="/logo-csn.png"
+                    src="/csnlogo.png"
                     alt="Coronasafe Network"
                     className="h-8 ml-2"
                 />

@@ -5,9 +5,9 @@ import {
   findState,
   hospitalsInState,
   pmusInState,
-} from "/lib/utils";
-import PMUListCard from "../../components/States/PMUListCard";
-import HospitalListCard from "../../components/States/HospitalListCard";
+} from "@lib/utils";
+import PMUListCard from "@components/states/PMUListCard";
+import HospitalListCard from "@components/states/HospitalListCard";
 
 const StatePage = ({ state }) => {
 
