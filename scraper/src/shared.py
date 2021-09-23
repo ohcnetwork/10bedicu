@@ -29,3 +29,14 @@ def clean_value(word):
     if not word:
         return ""
     return word.strip()
+
+
+def number(word):
+    # Attemps to convert to integer
+    # If fails, returns 0
+
+    try:
+        word = int(word)
+    except:
+        word = 0
+    return word

@@ -1,27 +1,30 @@
-import requests
-import csv
-from io import StringIO
-import json
+from config import META_SHEET
+from shared import clean_value, get_data, dump_data, number
 
-root_dir = "data"
 
-def dump_data(filename, data):
-    with open(f"{root_dir}/{filename}", "w") as json_file:
-        json_file.write(json.dumps(data, sort_keys=True))
+def model_meta(row):
+    # Transform a row into Meta (state) object
+    # according to the schema in /schemas/meta.json
+    # Make sure update /schemas/meta.json while changing here
 
-csv_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQF7T3mxoUlKREnTLa4LXv6HHzWBe8UGz0gKp0t0mdaUqtc1jDNk5Fs6EjmuivzH0deMqDtW5WMYSWO/pub?gid=0&single=true&output=csv'
-response = requests.get(csv_url)
-csv_data = csv.reader(StringIO(response.text))
-data = []
-for row in list(csv_data)[1:]:
-    if row[0].strip() != "":
-        data.append({
-            "name": row[0],
-            "path": row[1],
-            "number_of_hospitals": row[2],
-            "state_summary": row[3],
-            "state_logo": row[4],
-            "pmu_summary": row[5]
-        })
+    return {
+        "name": clean_value(row[0]),
+        "path": clean_value(row[1]),
+        "number_of_hospitals": number(clean_value(row[2])),
+        "state_summary": clean_value(row[3]),
+        "state_logo": clean_value(row[4]),
+        "pmu_summary": clean_value(row[5])
+    }
 
-dump_data("meta.json", data)
+
+csv_data = get_data(META_SHEET)
+
+json_data = []
+
+for row in csv_data:
+    state = model_meta(row)
+    name = state["name"]
+    if name:
+        json_data.append(state)
+
+dump_data("meta.json", json_data)
