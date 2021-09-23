@@ -29,6 +29,7 @@ for row in list(csv_data)[1:]:
             "hospital_photos": row[11],
             "latitude": row[12],
             "longitude": row[13],
+            "donors": row[14],
         })
 
 dump_data("hospitals.json", data)

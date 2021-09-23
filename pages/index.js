@@ -25,20 +25,26 @@ export default function Home() {
         <div className="flex flex-row flex-wrap mx-auto max-w-5xl justify-between mt-4">
           {meta.map((state) => {
             return (
-              <a href={`${state.path}`} className="max-w-lg p-4 w-full">
+              <a
+                key={state.path}
+                href={`${state.path}`}
+                className="max-w-lg p-4 w-full"
+              >
                 <div className="overflow-hidden rounded-lg shadow-lg h-full">
                   <div className="flex justify-center mt-6">
                     <img
-                      class="h-40"
+                      className="h-40"
                       alt={state.name}
                       src={state.state_logo}
                     ></img>
                   </div>
-                  <div class="px-6 py-4">
-                    <div class="font-bold text-3xl mb-2 text-center">
+                  <div className="px-6 py-4">
+                    <div className="font-bold text-3xl mb-2 text-center">
                       {state.name}
                     </div>
-                    <p class="text-gray-700 text-base">{state.state_summary}</p>
+                    <p className="text-gray-700 text-base">
+                      {state.state_summary}
+                    </p>
                   </div>
                 </div>
               </a>

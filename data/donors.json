@@ -1,0 +1,20 @@
+{
+  "donor_1": {
+    "image": "https://upload.wikimedia.org/wikipedia/commons/3/37/Vinod_Khosla%2C_Web_2.0_Conference.jpg",
+    "location": "Menlo Park, California",
+    "name": "Vinod Khosla",
+    "uuid": "donor_1"
+  },
+  "donor_2": {
+    "image": "https://avatars.githubusercontent.com/u/14979190?v=4",
+    "location": "Kochi, Kerala",
+    "name": "Bodhish Thomas",
+    "uuid": "donor_2"
+  },
+  "donor_3": {
+    "image": "https://www.salesforce.com/news/wp-content/uploads/sites/3/2021/05/Salesforce-logo.jpg",
+    "location": "USA",
+    "name": "Sales Force",
+    "uuid": "donor_3"
+  }
+}
