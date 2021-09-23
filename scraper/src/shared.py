@@ -40,3 +40,13 @@ def number(word):
     except:
         word = 0
     return word
+
+
+def split_entities(data, delimiter="\n"):
+    # Splits the string with given delimiter
+    # By default, the delimiter is 'line-feed \n'
+
+    if not data:
+        return []
+
+    return data.split(delimiter)
