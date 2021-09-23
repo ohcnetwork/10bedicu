@@ -1,57 +1,54 @@
 import React from "react";
 import Head from "next/head";
 import {
-  parametreize,
   statesStaticPaths,
-  humanize,
-  hospitalsInState,
   findState,
-  pmuInState,
   findDonor,
+  hospitalsInState,
+  pmusInState,
   splitText,
 } from "/lib/utils";
-import { useRouter } from "next/router";
 
-export default function State({ state }) {
-  const { query } = useRouter();
-  const hospitals = hospitalsInState(state);
-  const stateMeta = findState(state);
+const StatePage = ({ state }) => {
+
+  const hospitals = hospitalsInState(state.name);
+  const pmus = pmusInState(state.name)
+
   return (
     <div className="flex flex-col min-h-screen py-2">
       <Head>
-        <title>{humanize(state)} | 10 Bed ICU </title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>{state.name} | 10 Bed ICU </title>
       </Head>
       <div className="sticky top-0 bg-white w-full max-w-5xl mx-auto z-40 p-2">
         <a href="/">
           <img src="/10bedlogo.png" className="h-10 md:h-12" />
         </a>
       </div>
-
       <main className="mx-auto max-w-5xl flex flex-col items-center justify-center w-full flex-1">
-        <div className=" w-full">
+        <div className="w-full">
           <div className="p-3 text-center">
             <div className="flex justify-center mt-6">
               <img
                 className="h-40"
-                alt={stateMeta.name}
-                src={stateMeta.state_logo}
+                alt={state.name}
+                src={state.state_logo}
               ></img>
             </div>
             <div className="font-bold text-3xl md:text-5xl mb-2 text-gray-700 mt-4">
-              {stateMeta.name}
+              {state.name}
             </div>
             <div className="text-lg max-w-3xl mx-auto mt-4">
-              <p className="text-gray-500">{stateMeta.state_summary}</p>
+              <p className="text-gray-500">{state.state_summary}</p>
             </div>
           </div>
+
           <div className="mt-10 text-center text-gray-700">
             <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
               Project Management Unit
             </h2>
           </div>
           <div className="text-lg max-w-5xl mx-auto mt-6">
-            <p className="text-gray-500">{stateMeta.pmu_summary}</p>
+            <p className="text-gray-500 text-justify">{state.pmu_summary}</p>
           </div>
         </div>
 
@@ -60,15 +57,14 @@ export default function State({ state }) {
             role="list"
             className="space-y-12 sm:grid sm:grid-cols-3 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:gap-x-8"
           >
-            {pmuInState(state).map((pmu, index) => (
-              <li key={index}>
+            {pmusInState(state.name).map((pmu, i) => (
+              <li key={i}>
                 <div className="space-y-4">
                   <img
                     className="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56"
                     src={pmu.image}
-                    alt=""
+                    alt={pmu.name}
                   />
-
                   <div className="text-lg leading-6 font-medium space-y-1 text-center">
                     <h3>{pmu.name}</h3>
                   </div>
@@ -83,13 +79,14 @@ export default function State({ state }) {
 
         <div className="mt-20 text-center text-gray-700 border-b-2 pb-2">
           <h2 className="text-3xl font-extrabold tracking-tight sm:text-5xl">
-            10 Bed ICU's in {stateMeta.name}
+            10 Bed ICU's in {state.name}
           </h2>
         </div>
+
         <div className="flex flex-row flex-wrap mx-auto max-w-5xl justify-between mt-4">
-          {hospitals.map((hospital, index) => {
+          {hospitals.map((hospital, i) => {
             return (
-              <div className=" p-4 w-full" key={index}>
+              <div className=" p-4 w-full" key={i}>
                 <div className="overflow-hidden rounded-3xl shadow-lg h-full">
                   <div className="px-6 py-4">
                     <div className="font-bold text-3xl md:text-5xl mb-2  text-gray-700">
@@ -176,22 +173,6 @@ export default function State({ state }) {
           })}
         </div>
       </main>
-
-      <footer className="flex items-center justify-center w-full h-24 border-t">
-        <a
-          className="flex items-center justify-center"
-          href="http://coronasafe.network/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{" "}
-          <img
-            src="/logo-csn.png"
-            alt="Coronasafe Network"
-            className="h-8 ml-2"
-          />
-        </a>
-      </footer>
     </div>
   );
 }
@@ -199,7 +180,7 @@ export default function State({ state }) {
 export async function getStaticProps({ params }) {
   return {
     props: {
-      state: parametreize(params.state),
+      state: findState(params.state),
     },
   };
 }
@@ -210,3 +191,5 @@ export async function getStaticPaths() {
     fallback: false,
   };
 }
+
+export default StatePage;
