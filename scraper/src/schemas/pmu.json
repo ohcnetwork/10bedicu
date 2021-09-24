@@ -1,0 +1,6 @@
+{
+    "description": "TEXT",
+    "image": "URL",
+    "name": "STRING",
+    "state": "STRING"
+}

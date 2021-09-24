@@ -1,0 +1,8 @@
+{
+    "name": "STRING",
+    "number_of_hospitals": 0,
+    "path": "STRING",
+    "pmu_summary": "TEXT",
+    "state_logo": "URL",
+    "state_summary": "TEXT"
+}

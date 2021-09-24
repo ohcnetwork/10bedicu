@@ -1,35 +1,40 @@
-import requests
-import csv
-from io import StringIO
-import json
+from config import HOSPITALS_SHEET
+from shared import clean_value, get_data, dump_data, split_entities
 
-root_dir = "data"
 
-def dump_data(filename, data):
-    with open(f"{root_dir}/{filename}", "w") as json_file:
-        json_file.write(json.dumps(data, sort_keys=True))
+def model_hospital(row):
+    # Transform a row into Hospital object
+    # according to the schema in /schemas/hospital.json
+    # Make sure update /schemas/hospital.json while changing here
 
-csv_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQF7T3mxoUlKREnTLa4LXv6HHzWBe8UGz0gKp0t0mdaUqtc1jDNk5Fs6EjmuivzH0deMqDtW5WMYSWO/pub?gid=172030202&single=true&output=csv'
-response = requests.get(csv_url)
-csv_data = csv.reader(StringIO(response.text))
-data = []
-for row in list(csv_data)[1:]:
-    if row[0].strip() != "":
-        data.append({
-            "state": row[1],
-            "district": row[2],
-            "hospital_name": row[3],
-            "hospital_type": row[4],
-            "summary": row[5],
-            "funding_status": row[6],
-            "status": row[7],
-            "launch_date": row[8],
-            "collector_name": row[9],
-            "collector_photo": row[10],
-            "hospital_photos": row[11],
-            "latitude": row[12],
-            "longitude": row[13],
-            "donors": row[14],
-        })
+    return {
+        "state": clean_value(row[1]),
+        "district": clean_value(row[2]),
+        "hospital_name": clean_value(row[3]),
+        "hospital_type": clean_value(row[4]),
+        "summary": clean_value(row[5]),
+        "funding_status": clean_value(row[6]),
+        "status": clean_value(row[7]),
+        "launch_date": clean_value(row[8]),
+        "collector_name": clean_value(row[9]),
+        "collector_photo": clean_value(row[10]),
+        "hospital_photos": split_entities(clean_value(row[11])),
+        "latitude": clean_value(row[12]),
+        "longitude": clean_value(row[13]),
+        "donors": split_entities(clean_value(row[14])),
+    }
 
-dump_data("hospitals.json", data)
+
+csv_data = get_data(HOSPITALS_SHEET)
+
+json_data = []
+
+for row in csv_data:
+    # Checking whether it's live
+    if clean_value(row[0]):
+        hospital = model_hospital(row)
+        json_data.append(hospital)
+
+dump_data("hospitals.json", json_data)
+
+print(f"Dumped all {len(json_data)} Hospitals Data")

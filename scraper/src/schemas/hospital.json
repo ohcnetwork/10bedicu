@@ -1,0 +1,23 @@
+{
+    "collector_name": "STRING",
+    "collector_photo": "URL",
+    "district": "STRING",
+    "donors": [
+        "UUID | STRING",
+        "UUID | STRING"
+    ],
+    "funding_status": "STRING",
+    "hospital_name": "STRING",
+    "hospital_photos": [
+        "URL",
+        "URL",
+        "URL"
+    ],
+    "hospital_type": "STRING",
+    "latitude": "STRING",
+    "launch_date": "STRING",
+    "longitude": "STRING",
+    "state": "STRING",
+    "status": "STRING",
+    "summary": "TEXT"
+}

@@ -1,0 +1,6 @@
+{
+    "uuid": "UUID | STRING",
+    "name": "STRING",
+    "location": "STRING",
+    "image": "URL"
+}

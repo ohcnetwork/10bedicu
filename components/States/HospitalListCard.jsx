@@ -1,5 +1,3 @@
-import { findDonor, splitText } from "../../lib/utils";
-
 const HospitalListCard = ({
   hospital_name,
   district,
@@ -37,7 +35,7 @@ const HospitalListCard = ({
         </div>
       </div>
       <div className="space-y-6 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-6 sm:space-y-0 lg:grid-cols-2 lg:gap-x-4 px-6 py-4">
-        {splitText(hospital_photos).map((photo, i) => {
+        {hospital_photos.map((photo, i) => {
           return (
             <div className="space-y-4" key={i}>
               <div className="aspect-w-3 aspect-h-2">
@@ -53,14 +51,13 @@ const HospitalListCard = ({
       </div>
       <div className="mx-auto px-6 py-8">
         <h2 className="text-center text-2xl font-bold">
-          {splitText(donors).length > 1 ? "Donors" : "Donor"}
+          {donors.length > 1 ? "Donors" : "Donor"}
         </h2>
         <div className="mt-4 flex flex-col md:flex-row item-center justify-center">
-          {splitText(donors).map((donorSlug, index) => {
-            const donor = findDonor(donorSlug);
+          {donors.map((donor, i) => {
             return (
               <div
-                key={index}
+                key={i}
                 className="md:w-1/3 flex flex-col flex-wrap justify-center py-8 px-8 "
               >
                 <div className="aspect-w-1 aspect-h-1">
