@@ -4,6 +4,7 @@ from shared import dump_data, get_json_data
 hospital_data = get_json_data("hospitals.json")
 donors_data = get_json_data("donors.json")
 
+
 def associate_donor(hospital: dict):
     donors = hospital.get("donors", [])
     hospital.update({
@@ -15,6 +16,9 @@ def associate_donor(hospital: dict):
     })
     return hospital
 
+
 hospital_data = list(map(associate_donor, hospital_data))
 
 dump_data("hospitals.json", hospital_data)
+
+print("Donors data associated with Hospital List")
