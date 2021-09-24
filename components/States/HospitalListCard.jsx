@@ -30,7 +30,7 @@ const HospitalListCard = ({
             </div>
           </div>
           <div className="text-lg md:w-2/3">
-            <p className="text-gray-500">{summary}</p>
+            <p className="text-gray-500 text-justify">{summary}</p>
           </div>
         </div>
       </div>
