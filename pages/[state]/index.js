@@ -10,9 +10,8 @@ import PMUListCard from "@components/States/PMUListCard";
 import HospitalListCard from "@components/States/HospitalListCard";
 
 const StatePage = ({ state }) => {
-
   const hospitals = hospitalsInState(state.name);
-  const pmus = pmusInState(state.name)
+  const pmus = pmusInState(state.name);
 
   return (
     <div className="flex flex-col min-h-screen py-2">
@@ -37,8 +36,8 @@ const StatePage = ({ state }) => {
             <div className="font-bold text-3xl md:text-5xl mb-2 text-gray-700 mt-4">
               {state.name}
             </div>
-            <div className="text-lg max-w-3xl mx-auto mt-4">
-              <p className="text-gray-500">{state.state_summary}</p>
+            <div className="text-lg max-w-3xl mx-auto mt-4 text-justify md:text-center">
+              <p className="text-gray-500 ">{state.state_summary}</p>
             </div>
           </div>
           <div className="mt-10 text-center text-gray-700">
@@ -46,12 +45,12 @@ const StatePage = ({ state }) => {
               Project Management Unit
             </h2>
           </div>
-          <div className="text-lg max-w-5xl mx-auto mt-6">
+          <div className="text-lg max-w-5xl mx-auto mt-6 px-2">
             <p className="text-gray-500 text-justify">{state.pmu_summary}</p>
           </div>
         </div>
 
-        <div className="bg-white mt-10">
+        <div className="bg-white mt-10 p-2">
           <ul
             role="list"
             className="space-y-12 sm:grid sm:grid-cols-3 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:gap-x-8"
@@ -80,7 +79,7 @@ const StatePage = ({ state }) => {
       </main>
     </div>
   );
-}
+};
 
 export async function getStaticProps({ params }) {
   return {

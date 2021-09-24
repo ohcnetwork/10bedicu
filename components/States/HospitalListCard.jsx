@@ -20,7 +20,7 @@ const HospitalListCard = ({
         <div className="flex flex-col md:flex-row w-full mt-6 space-y-6">
           <div className="flex items-center justify-center flex-col md:w-1/3">
             <img
-              className="object-cover shadow-lg  h-40 w-40 rounded-full"
+              className="object-cover shadow-lg h-40 w-40 rounded-full"
               src={collector_photo}
               alt={collector_name}
             ></img>
