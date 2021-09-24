@@ -26,3 +26,5 @@ for row in csv_data:
         json_data.append(pmu)
 
 dump_data("pmu.json",  json_data)
+
+print(f"Dumped all {len(json_data)} PMUs Data")

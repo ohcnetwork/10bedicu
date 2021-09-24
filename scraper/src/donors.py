@@ -26,3 +26,5 @@ for row in csv_data:
         json_data[uuid] = donor
 
 dump_data("donors.json", json_data)
+
+print(f"Dumped all {len(json_data)} Donors Data")

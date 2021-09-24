@@ -28,3 +28,5 @@ for row in csv_data:
         json_data.append(state)
 
 dump_data("meta.json", json_data)
+
+print(f"Dumped all {len(json_data)} Meta Data")
