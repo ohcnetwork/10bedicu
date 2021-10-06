@@ -192,7 +192,7 @@ function Navbar() {
         <div className="max-w-screen-xl mx-auto flex items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-12 w-12 text-white xl:hidden"
+            className="h-12 w-12 text-white xl:hidden absolute"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
