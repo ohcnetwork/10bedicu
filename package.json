@@ -6,10 +6,12 @@
     "start": "next start"
   },
   "dependencies": {
+    "@react-icons/all-files": "^4.1.0",
     "@tailwindcss/aspect-ratio": "^0.2.1",
     "next": "latest",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-icons": "^4.3.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.6",
