@@ -9,7 +9,7 @@ const HomePage = () => {
   const navMap = [
     {
       title: "Home",
-      href: "https://10bedicu.org/#",
+      href: "https://10bedicu.org/",
     },
     {
       title: "July24-Conf",
@@ -56,15 +56,15 @@ const HomePage = () => {
       sublinks: [
         {
           title: "Video Courses",
-          href: "https://10bedicu.org/karnataka",
+          href: "https://10bedicu.org/video-courses",
         },
         {
           title: "OnePager ICU Topics",
-          href: "https://10bedicu.org/karnataka",
+          href: "https://10bedicu.org/onepager-icu-topics",
         },
         {
           title: "FAQs",
-          href: "https://10bedicu.org/andhra-pradesh",
+          href: "https://10bedicu.org/faqs",
         },
       ],
       flattenOnMobile: false,
