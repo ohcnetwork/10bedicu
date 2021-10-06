@@ -1,19 +1,14 @@
 const Footer = () => {
     return (
         <footer className="flex items-center justify-center w-full h-24 border-t">
-            <a
-                className="flex items-center justify-center"
-                href="http://coronasafe.network/"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <span>Powered by</span>
-                <img
-                    src="/csnlogo.png"
-                    alt="Coronasafe Network"
-                    className="h-8 ml-2"
-                />
-            </a>
+            <div className="w-5/6 my-2 lg:grid grid-cols-2">
+                <div className="text-center lg:text-left">Copyright © 2021 10 Bed ICU - All Rights Reserved.</div>
+                <div className="text-center flex space-x-2 lg:text-left">
+                    <div>facebook</div>
+                    <div>twitter</div>
+                    <div>youtube</div>
+                </div>
+            </div>
         </footer>
     );
 }
