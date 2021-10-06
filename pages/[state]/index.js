@@ -40,12 +40,9 @@ const StatePage = ({ state }) => {
               <p className="text-gray-500 ">{state.state_summary}</p>
             </div>
           </div>
-          {
-            state.state_donor_map  &&(<img
-              alt={state.name}
-              src={state.state_donor_map}
-            ></img>)
-          }
+          {state.state_donor_map && (
+            <img alt={state.name} src={state.state_donor_map}></img>
+          )}
 
           <div className="mt-10 text-center text-gray-700">
             <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
