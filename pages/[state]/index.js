@@ -8,21 +8,18 @@ import {
 } from "@lib/utils";
 import PMUListCard from "@components/States/PMUListCard";
 import HospitalListCard from "@components/States/HospitalListCard";
+import Navbar from "@components/Navbar";
 
 const StatePage = ({ state }) => {
   const hospitals = hospitalsInState(state.name);
   const pmus = pmusInState(state.name);
 
   return (
-    <div className="flex flex-col min-h-screen py-2">
+    <div className="flex flex-col min-h-screen pb-2">
       <Head>
         <title>{state.name} | 10 Bed ICU </title>
       </Head>
-      <div className="sticky top-0 bg-white w-full max-w-5xl mx-auto z-40 p-2">
-        <a href="/">
-          <img src="/10bedlogo.png" className="h-10 md:h-12" />
-        </a>
-      </div>
+      <Navbar />
       <main className="mx-auto max-w-5xl flex flex-col items-center justify-center w-full flex-1">
         <div className="w-full">
           <div className="p-3 text-center">
@@ -40,12 +37,9 @@ const StatePage = ({ state }) => {
               <p className="text-gray-500 ">{state.state_summary}</p>
             </div>
           </div>
-          {
-            state.state_donor_map  &&(<img
-              alt={state.name}
-              src={state.state_donor_map}
-            ></img>)
-          }
+          {state.state_donor_map && (
+            <img alt={state.name} src={state.state_donor_map}></img>
+          )}
 
           <div className="mt-10 text-center text-gray-700">
             <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
