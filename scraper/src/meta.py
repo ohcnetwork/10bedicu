@@ -13,7 +13,8 @@ def model_meta(row):
         "number_of_hospitals": number(clean_value(row[2])),
         "state_summary": clean_value(row[3]),
         "state_logo": clean_value(row[4]),
-        "pmu_summary": clean_value(row[5])
+        "pmu_summary": clean_value(row[5]),
+        "state_donor_map": clean_value(row[6]),
     }
 
 
