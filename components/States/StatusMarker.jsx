@@ -3,13 +3,13 @@ import React, { Component } from "react";
 const getColor = (status) => {
   switch (status) {
     case "pending":
-      return "#ffc107";
+      return "red";
     case "completed":
-      return "#28a745";
+      return "green";
     case "in_progress":
-      return "#17a2b8";
+      return "orange";
     default:
-      return "#dc3545";
+      return "gray";
   }
 };
 

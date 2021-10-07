@@ -29,7 +29,51 @@ export default function HospitalStatusMap({state, hospitals}) {
       stateLayer.setMap(map)
     }
     console.log(state)
-    return (state.lat && state.lng) ? (
+    return (<div>
+      <div className="flex w-full justify-center items-center gap-2">
+        <span className="flex justify-center items-center gap-2">
+            <svg className="w-4 h-4" viewBox="0 0 50 50">
+              <polygon points="25,0 50,50 0,50" fill="gray" />
+            </svg>
+            Site Ready
+        </span>
+        <span className="flex justify-center items-center gap-2">
+            <svg className="w-4 h-4" viewBox="0 0 50 50">
+              <rect x="0" y="0" width="50" height="50" fill="gray" />
+            </svg>
+            Equipment Delivered
+        </span>
+        <span className="flex justify-center items-center gap-2">
+            <svg className="w-4 h-4" viewBox="0 0 50 50">
+              <circle cx="25" cy="25" r="25" fill="gray" />
+            </svg>
+            10BedICU Live
+        </span>
+        <span className="flex justify-center items-center gap-2">
+            <svg className="w-4 h-4" viewBox="0 0 50 50">
+              {/* Completed */}
+              <circle cx="25" cy="25" r="25" fill="green" />
+            </svg>
+            Completed
+        </span>
+        <span className="flex justify-center items-center gap-2">
+            <svg className="w-4 h-4" viewBox="0 0 50 50">
+              {/* In Progress */}
+              <circle cx="25" cy="25" r="25" fill="orange" />
+            </svg>
+            In Progress
+        </span>
+        <span className="flex justify-center items-center gap-2">
+            <svg className="w-4 h-4" viewBox="0 0 50 50">
+              {/* Not Completed */}
+              <circle cx="25" cy="25" r="25" fill="red" />
+            </svg>
+            Not Completed
+        </span>
+
+
+      </div>
+      {(state.lat && state.lng) ? (
         <div style={{ height: "75vh", width: "100%" }}>
             <GoogleMapReact
             bootstrapURLKeys={{
@@ -244,17 +288,18 @@ export default function HospitalStatusMap({state, hospitals}) {
               }}
         >
           {
-            hospitals.map((hospital, renderIndex) => {
+            hospitals.filter(hospital => hospital.latitude && hospital.longitude).map((hospital, renderIndex) => {
               console.log("Hospital at " + hospital.latitude + " " + hospital.longitude);
             return <StatusMarker
-              key={hospital.hospital_name + renderIndex}
-              lat={hospital.latitude}
-              lng={hospital.longitude} 
-              status={hospital}
-            />
+            key={hospital.hospital_name + renderIndex}
+            lat={hospital.latitude}
+            lng={hospital.longitude} 
+            status={hospital}
+          />
             })
           } 
         </GoogleMapReact>
       </div>
-    ) : ""
+    ) : ""}
+    </div>)
 }

@@ -1,5 +1,5 @@
 from config import STATES_SHEET
-from shared import clean_value, get_data, get_data_header_2, dump_data, split_entities
+from shared import clean_value, get_data, get_data_header_status, dump_data, split_entities
 
 
 def model_state(row):
@@ -44,7 +44,7 @@ sheet_data = get_data(STATES_SHEET)
 json_data = []
 for sheet in sheet_data:
     print(model_state(sheet)["sheet"])
-    csv_data = get_data_header_2(model_state(sheet).get("sheet"))
+    csv_data = get_data_header_status(model_state(sheet).get("sheet"))
     for row in csv_data:
         # Checking whether it's live
         if clean_value(row[0]):

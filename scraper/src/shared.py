@@ -26,13 +26,13 @@ def get_data(csv_url, header=False):
     csv_data = list(csv_data)
     return csv_data if header else csv_data[1:]
 
-def get_data_header_2(csv_url, header=False):
+def get_data_header_status(csv_url, header=False):
     # Makes a request to published sheet and
     # parses it as CSV and returns a list of rows
     response = requests.get(csv_url)
     csv_data = csv.reader(StringIO(response.text))
     csv_data = list(csv_data)
-    return csv_data[2:]
+    return csv_data[3:]
 
 
 def clean_value(word):

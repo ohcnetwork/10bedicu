@@ -41,7 +41,7 @@ const StatePage = ({ state, hospitals, pmus }) => {
 
           <div className="mt-10 text-center text-gray-700">
             <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
-              Project Management Unit
+              Hospital Status
             </h2>
           </div>
           <div className="text-lg max-w-5xl mx-auto mt-6 px-2">
