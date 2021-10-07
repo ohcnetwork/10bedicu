@@ -3,6 +3,17 @@ module.exports = {
   purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    fontFamily: {
+      sans: ["Quicksand", "ui-sans-serif", "system-ui"],
+
+      serif: ["Quicksand", "ui-serif", "serif"],
+
+      mono: ["Quicksand", "ui-monospace", "monospace"],
+
+      display: ["Quicksand", "ui-display", "sans-serif"],
+
+      body: ["Quicksand", "ui-body", "sans-serif"],
+    },
     extend: {
       colors: {
         primary: {

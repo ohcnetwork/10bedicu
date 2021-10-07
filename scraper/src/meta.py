@@ -15,6 +15,12 @@ def model_meta(row):
         "state_logo": clean_value(row[4]),
         "pmu_summary": clean_value(row[5]),
         "state_donor_map": clean_value(row[6]),
+        "lat": number(clean_value(row[7])),
+        "lng": number(clean_value(row[8])),
+        "north": number(clean_value(row[9])),
+        "south": number(clean_value(row[10])),
+        "west": number(clean_value(row[11])),
+        "east": number(clean_value(row[12])),
     }
 
 

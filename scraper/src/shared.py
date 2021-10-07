@@ -26,6 +26,14 @@ def get_data(csv_url, header=False):
     csv_data = list(csv_data)
     return csv_data if header else csv_data[1:]
 
+def get_data_header_2(csv_url, header=False):
+    # Makes a request to published sheet and
+    # parses it as CSV and returns a list of rows
+    response = requests.get(csv_url)
+    csv_data = csv.reader(StringIO(response.text))
+    csv_data = list(csv_data)
+    return csv_data[2:]
+
 
 def clean_value(word):
     # Removes the leading whitespaces and
@@ -41,10 +49,11 @@ def number(word):
     # If fails, returns 0
 
     try:
-        word = int(word)
+        word = float(word)
     except:
         word = 0
     return word
+    
 
 
 def split_entities(data, delimiter="\n"):

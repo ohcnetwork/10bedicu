@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 function Navbar() {
   const [navbarOpen, setNavbarOpen] = useState(false);
   useEffect(() => {
-    document.body.style.overflow = navbarOpen ? "hidden" : "scroll";
+    document.body.style.overflow = navbarOpen ? "hidden" : "auto";
   }, [navbarOpen]);
   const navMap = [
     {
@@ -172,7 +172,7 @@ function Navbar() {
             />
           </svg>
         </div>
-        <div className={`${open ? "block" : "hidden"}`}>
+        <div className={open ? "block" : "hidden"}>
           <ul>
             {props.sublinks.map((sublink) => (
               <li className="w-full" key={sublink.href}>
@@ -254,9 +254,14 @@ function Navbar() {
         <ul className="text-white divide-solid divide-gray-700 divide-y-2 flex flex-col items-stretch overflow-y-auto">
           {navMap.map((navItem) => {
             return "href" in navItem ? (
-              <NavLinkMobile title={navItem.title} href={navItem.href} />
+              <NavLinkMobile
+                title={navItem.title}
+                href={navItem.href}
+                key={navItem.href}
+              />
             ) : (
               <NavDropdownLinkMobile
+                key={navItem.href}
                 title={navItem.title}
                 sublinks={navItem.sublinks}
               />

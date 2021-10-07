@@ -9,11 +9,9 @@ import {
 import PMUListCard from "@components/States/PMUListCard";
 import HospitalListCard from "@components/States/HospitalListCard";
 import Navbar from "@components/Navbar";
+import HospitalStatusMap from "@components/States/HospitalStatusMap";
 
-const StatePage = ({ state }) => {
-  const hospitals = hospitalsInState(state.name);
-  const pmus = pmusInState(state.name);
-
+const StatePage = ({ state, hospitals, pmus }) => {
   return (
     <div className="flex flex-col min-h-screen pb-2">
       <Head>
@@ -40,6 +38,15 @@ const StatePage = ({ state }) => {
           {state.state_donor_map && (
             <img alt={state.name} src={state.state_donor_map}></img>
           )}
+
+          <div className="mt-10 text-center text-gray-700">
+            <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
+              Project Management Unit
+            </h2>
+          </div>
+          <div className="text-lg max-w-5xl mx-auto mt-6 px-2">
+            <HospitalStatusMap state={state} hospitals={hospitals} />
+          </div>
 
           <div className="mt-10 text-center text-gray-700">
             <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
@@ -83,9 +90,15 @@ const StatePage = ({ state }) => {
 };
 
 export async function getStaticProps({ params }) {
+  const state = findState(params.state);
+  const hospitals = hospitalsInState(state.name);
+  const pmus = pmusInState(state.name);
+
   return {
     props: {
-      state: findState(params.state),
+      state: state,
+      hospitals: hospitals,
+      pmus: pmus,
     },
   };
 }

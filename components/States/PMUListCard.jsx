@@ -2,9 +2,9 @@ const PMUListCard = ({ name, image, description }) => {
   return (
     <div className="p-2 rounded-lg shadow">
       <div className="p-4">
-        <div class="aspect-w-1 aspect-h-1">
+        <div className="aspect-w-1 aspect-h-1">
           <img
-            class="object-cover shadow-lg rounded-full"
+            className="object-cover shadow-lg rounded-full"
             src={image}
             alt={name}
           />

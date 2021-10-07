@@ -1,0 +1,8 @@
+<svg>
+    <!-- Square -->
+    <rect x="0" y="55" width="40" height="40" fill="red" />
+    <!-- Circle -->
+    <circle cx="85" cy="100" r="25" fill="green" />
+    <!-- Equilateral Triangle -->
+    <polygon points="75,0 100,50 50,50" fill="blue" />
+</svg>
