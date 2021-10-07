@@ -30,7 +30,7 @@ export default function HospitalStatusMap({state, hospitals}) {
     }
     console.log(state)
     return (<div>
-      <div className="flex w-full justify-center items-center gap-2">
+      <div className="flex w-full justify-center items-center gap-2 pb-6">
         <span className="flex justify-center items-center gap-2">
             <svg className="w-4 h-4" viewBox="0 0 50 50">
               <polygon points="25,0 50,50 0,50" fill="gray" />
