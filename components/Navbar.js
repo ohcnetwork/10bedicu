@@ -6,7 +6,7 @@ function Navbar() {
   useEffect(() => {
     document.body.style.overflow = navbarOpen ? "hidden" : "auto";
   }, [navbarOpen]);
-  const navMap = [
+  const navMapMobile = [
     {
       title: "Home",
       href: "https://10bedicu.org/",
@@ -29,7 +29,6 @@ function Navbar() {
         { title: "Nagaland", href: "https://10bedicu.org/nagaland" },
         { title: "Sikkim", href: "https://10bedicu.org/sikkim" },
       ],
-      flattenOnMobile: false,
     },
     {
       title: "Tech Platform",
@@ -67,7 +66,75 @@ function Navbar() {
           href: "https://10bedicu.org/faqs",
         },
       ],
-      flattenOnMobile: false,
+    },
+  ];
+  const navMap = [
+    {
+      title: "Home",
+      href: "https://10bedicu.org/",
+    },
+    {
+      title: "July24-Conf",
+      href: "https://10bedicu.org/july24-conf",
+    },
+    {
+      title: "Program States ",
+      sublinks: [
+        { title: "Telangana", href: "https://10bedicu.org/telangana" },
+        { title: "Karnataka", href: "https://10bedicu.org/karnataka" },
+        {
+          title: "Andhra Pradesh",
+          href: "https://10bedicu.org/andhra-pradesh",
+        },
+        { title: "Manipur", href: "https://10bedicu.org/manipur" },
+        { title: "Meghalaya", href: "https://10bedicu.org/meghalaya" },
+        { title: "Nagaland", href: "https://10bedicu.org/nagaland" },
+        { title: "Sikkim", href: "https://10bedicu.org/sikkim" },
+      ],
+    },
+    {
+      title: "Tech Platform",
+      href: "https://10bedicu.org/tech-platform",
+    },
+    {
+      title: "Media",
+      href: "https://10bedicu.org/#",
+    },
+    {
+      title: "Donate Now",
+      href: "https://10bedicu.org/donate-now",
+    },
+    {
+      title: "Deployment",
+      href: "https://10bedicu.org/deployment",
+    },
+    {
+      title: "More",
+      sublinks: [
+        {
+          title: "Our Team",
+          href: "https://10bedicu.org/our-team",
+        },
+        {
+          title: "Training",
+          href: "",
+        },
+        {
+          title: "Video Courses",
+          href: "https://10bedicu.org/video-courses",
+          padded: true,
+        },
+        {
+          title: "OnePager ICU Topics",
+          href: "https://10bedicu.org/onepager-icu-topics",
+          padded: true,
+        },
+        {
+          title: "FAQs",
+          href: "https://10bedicu.org/faqs",
+          padded: true,
+        },
+      ],
     },
   ];
   const NavLink = (props) => {
@@ -128,9 +195,11 @@ function Navbar() {
         >
           <ul>
             {props.sublinks.map((sublink) => (
-              <li key={sublink.href}>
+              <li key={sublink.href} className="text-left w-60">
                 <a
-                  className="text-xl py-2 px-4 hover:bg-[#005b64] block"
+                  className={`text-xl py-2 px-4 hover:bg-[#005b64] block ${
+                    sublink.padded ? "pl-8" : ""
+                  }`}
                   href={sublink.href}
                 >
                   {sublink.title}
@@ -148,7 +217,7 @@ function Navbar() {
     return (
       <li className="h-full items-center">
         <div
-          className="mx-6 text-xl py-3 block"
+          className="mx-6 text-xl py-3 flex justify-between"
           href="#"
           onClick={(e) => {
             setOpen(!open);
@@ -210,7 +279,7 @@ function Navbar() {
           <a href="/" className="block mx-auto lg:m-0">
             <img src="/10bedlogo.png" className="h-20 m-3" />
           </a>
-          <ul className=" justify-between items-center text-white lg:flex hidden flex-1">
+          <ul className=" justify-end gap-9 items-center text-white lg:flex hidden flex-1">
             {navMap.map((navItem) => {
               return "href" in navItem ? (
                 <NavLink
@@ -252,7 +321,7 @@ function Navbar() {
           />
         </svg>
         <ul className="text-white divide-solid divide-gray-700 divide-y-2 flex flex-col items-stretch overflow-y-auto">
-          {navMap.map((navItem) => {
+          {navMapMobile.map((navItem) => {
             return "href" in navItem ? (
               <NavLinkMobile
                 title={navItem.title}
