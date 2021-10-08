@@ -1,3 +1,4 @@
+import { DEFAULT_AVATAR } from "@lib/constants";
 import icons from "/data/icons.json";
 
 const iconText = {
@@ -96,7 +97,7 @@ const HospitalListCard = (hospital) => {
                         <div className="aspect-w-1 aspect-h-1">
                           <img
                             className="object-cover shadow-lg rounded-full"
-                            src={donor.image}
+                            src={donor.image || DEFAULT_AVATAR}
                             alt={donor.name}
                           />
                         </div>
@@ -175,7 +176,7 @@ const HospitalListCard = (hospital) => {
           <div className="px-6 py-4">
             <span>Go Live on:</span>
             <span className="text-xl ml-2 font-bold">
-              {hospital.launch_date}
+              {hospital.launch_date || "TBD"}
             </span>
           </div>
         </div>
