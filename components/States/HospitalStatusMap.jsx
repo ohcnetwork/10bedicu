@@ -19,9 +19,9 @@ export default function HospitalStatusMap({state, hospitals}) {
       stateLayer.loadGeoJson(`/geojson/${parametreize(state.name)}.json`);
       stateLayer.setStyle(function(feature) {
         return {
-        fillColor: '#000000', // call function to get color for state based on the COLI (Cost of Living Index)
+        fillColor: '#42f56f', // call function to get color for state based on the COLI (Cost of Living Index)
         fillOpacity: 0.8,
-        strokeColor: '#b3b3b3',
+        strokeColor: '#42f593',
         strokeWeight: 1,
         zIndex: 1
         };
