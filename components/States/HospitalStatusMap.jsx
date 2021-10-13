@@ -21,7 +21,7 @@ export default function HospitalStatusMap({state, hospitals}) {
         return {
         fillColor: '#42f56f', // call function to get color for state based on the COLI (Cost of Living Index)
         fillOpacity: 0.8,
-        strokeColor: '#42f593',
+        strokeColor: '#ffffff',
         strokeWeight: 1,
         zIndex: 1
         };
@@ -30,7 +30,7 @@ export default function HospitalStatusMap({state, hospitals}) {
     }
     console.log(state)
     return (<div>
-      <div className="flex w-full justify-center items-center gap-2 pb-6">
+      <div className="flex flex-wrap w-full justify-center items-center gap-2 pb-6">
         <span className="flex justify-center items-center gap-2">
             <svg className="w-4 h-4" viewBox="0 0 50 50">
               <polygon points="25,0 50,50 0,50" fill="gray" />
