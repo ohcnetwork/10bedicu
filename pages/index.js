@@ -1,5 +1,5 @@
 import HomeStatesList from "@components/HomeStatesList";
-import Navbar from "../components/Navbar";
+import Navbar from "@components/Navbar";
 
 const HomePage = () => {
   return (

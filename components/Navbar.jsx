@@ -1,6 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
+import meta from "../data/meta.json";
+
 function Navbar() {
   const [navbarOpen, setNavbarOpen] = useState(false);
   useEffect(() => {
@@ -17,18 +19,7 @@ function Navbar() {
     },
     {
       title: "Program States ",
-      sublinks: [
-        { title: "Telangana", href: "https://10bedicu.org/telangana" },
-        { title: "Karnataka", href: "https://10bedicu.org/karnataka" },
-        {
-          title: "Andhra Pradesh",
-          href: "https://10bedicu.org/andhra-pradesh",
-        },
-        { title: "Manipur", href: "https://10bedicu.org/manipur" },
-        { title: "Meghalaya", href: "https://10bedicu.org/meghalaya" },
-        { title: "Nagaland", href: "https://10bedicu.org/nagaland" },
-        { title: "Sikkim", href: "https://10bedicu.org/sikkim" },
-      ],
+      sublinks: meta.map((state) => ({ title: state.name, href: `/${state.path}` }))
     },
     {
       title: "Tech Platform",
@@ -79,18 +70,7 @@ function Navbar() {
     },
     {
       title: "Program States ",
-      sublinks: [
-        { title: "Telangana", href: "https://10bedicu.org/telangana" },
-        { title: "Karnataka", href: "https://10bedicu.org/karnataka" },
-        {
-          title: "Andhra Pradesh",
-          href: "https://10bedicu.org/andhra-pradesh",
-        },
-        { title: "Manipur", href: "https://10bedicu.org/manipur" },
-        { title: "Meghalaya", href: "https://10bedicu.org/meghalaya" },
-        { title: "Nagaland", href: "https://10bedicu.org/nagaland" },
-        { title: "Sikkim", href: "https://10bedicu.org/sikkim" },
-      ],
+      sublinks: meta.map((state) => ({ title: state.name, href: `/${state.path}` })),
     },
     {
       title: "Tech Platform",
