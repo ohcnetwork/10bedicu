@@ -19,7 +19,7 @@ function Navbar() {
     },
     {
       title: "Program States ",
-      sublinks: meta.map((state) => ({ title: state.name, href: `/${state.path}` }))
+      sublinks: meta.map((state) => ({ title: state.name, href: state.name === "telengana" ? 'https://10bedicu.org/telangana' `/${state.path}` })),
     },
     {
       title: "Tech Platform",
