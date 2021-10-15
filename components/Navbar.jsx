@@ -70,7 +70,7 @@ function Navbar() {
     },
     {
       title: "Program States ",
-      sublinks: meta.map((state) => ({ title: state.name, href: `/${state.path}` })),
+      sublinks: meta.map((state) => ({ title: state.name, href: state.name === "telengana" ? 'https://10bedicu.org/telangana' `/${state.path}` })),
     },
     {
       title: "Tech Platform",
@@ -131,7 +131,7 @@ function Navbar() {
   };
   const NavLinkMobile = (props) => {
     return (
-      <li>
+      <li key={props.href}>
         <a className="mx-6 text-xl py-3 block" href={props.href}>
           {props.title}
         </a>
@@ -142,7 +142,7 @@ function Navbar() {
   const NavDropdownLink = (props) => {
     const [open, setOpen] = useState(false);
     return (
-      <li className="h-full flex items-center relative">
+      <li key={props.href} className="h-full flex items-center relative">
         <div
           className="cursor-pointer text-xl border-b-2 border-transparent hover:border-white"
           href="#"

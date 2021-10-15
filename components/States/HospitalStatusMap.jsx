@@ -27,6 +27,14 @@ export default function HospitalStatusMap({state, hospitals}) {
         };
       });
       stateLayer.setMap(map)
+      stateLayer.addListener('mouseover', function(event) {
+        stateLayer.revertStyle();
+        stateLayer.overrideStyle(event.feature, {strokeWeight: 4, fillColor: `#42f5df`});
+      });
+      stateLayer.addListener('mouseout', function(event) {
+        stateLayer.revertStyle();
+      });
+      
     }
     console.log(state)
     return (<div>
@@ -73,29 +81,33 @@ export default function HospitalStatusMap({state, hospitals}) {
 
 
       </div>
-      {(state.lat && state.lng) ? (
+      {(
         <div style={{ height: "75vh", width: "100%" }}>
             <GoogleMapReact
             bootstrapURLKeys={{
             key: GMAP_KEY,
             }}
-            defaultCenter={{
-            lat: 10.148_547_6,
-            lng: 76.500_752_4,
-            }}
-            defaultZoom={8}
-            center={mapState.center}
-            zoom={6}
+            center={
+              state.lat>0 & state.lng>0 ? 
+              mapState.center : 
+              {
+                lat: 23.598_547_6,
+                lng: 78.960_752_4,
+              }}
+            zoom={state.lat > 0 && state.lng > 0 ? 6 : 2}
             onGoogleApiLoaded={onReady}
             options={{
                 restriction: {
-                    latLngBounds: {
+                    latLngBounds: (state.north > 0 && state.south > 0 && state.east > 0 && state.west > 0 ? {
                         north: state.north,
                         south: state.south,
                         east: state.east,
                         west: state.west,
-                      },
-                    strictBounds: false,
+                      } :
+                      {
+                        north:35.63936,	south:6.20453,	west:68.14712,	east:97.34466
+                      }),
+                    strictBounds: true,
                   },
                 styles:
                   [
@@ -300,6 +312,6 @@ export default function HospitalStatusMap({state, hospitals}) {
           } 
         </GoogleMapReact>
       </div>
-    ) : ""}
+    )}
     </div>)
 }
