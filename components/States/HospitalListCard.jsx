@@ -55,17 +55,21 @@ const HospitalListCard = (hospital) => {
       <div className="overflow-hidden rounded-2xl shadow-lg h-full">
         <div className="grid md:grid-cols-3 bg-primary-500">
           <div className="col-span-1 text-white md:pl-6 text-center md:text-left">
-            <div className="font-semibold text-xl md:text-3xl mb-2 mt-4">
+            <div className="font-semibold text-lg md:text-2xl mb-2 mt-4 pr-2">
+              {hospital.hospital_name}
+            </div>
+            <div className="font-semibold text-base mb-2 mt-4 pr-2">
               {hospital.district} Dt.
             </div>
             <div className="mt-4 flex justify-center md:justify-start">
               <img
                 className="object-cover shadow-lg h-16 w-16 rounded-full"
-                src={hospital.collector_photo}
+                onError={(e) => (e.target.src = DEFAULT_AVATAR)}
+                src={hospital.collector_photo || DEFAULT_AVATAR}
                 alt={hospital.collector_name}
               ></img>
             </div>
-            <div className="text-md leading-6 font-medium space-y-1 mt-2">
+            <div className="text-md leading-6 font-medium space-y-1 my-2">
               <h3>{hospital.collector_name}</h3>
               <p className="font-light text-xs">District Collector</p>
             </div>
@@ -97,6 +101,7 @@ const HospitalListCard = (hospital) => {
                         <div className="aspect-w-1 aspect-h-1">
                           <img
                             className="object-cover shadow-lg rounded-full"
+                            onError={(e) => (e.target.src = DEFAULT_AVATAR)}
                             src={donor.image || DEFAULT_AVATAR}
                             alt={donor.name}
                           />
