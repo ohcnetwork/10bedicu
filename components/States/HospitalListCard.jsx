@@ -75,11 +75,11 @@ const HospitalListCard = (hospital) => {
             </div>
           </div>
           <div className="col-span-1 bg-white">
-            <div className="space-y-1 sm:grid sm:grid-cols-2 sm:gap-x-1 sm:gap-y-1 sm:space-y-0 lg:grid-cols-2 lg:gap-x-1 px-1 py-0">
+            <div className="space-y-1 justify-center flex-wrap items-center flex px-1 py-0">
               {hospital.hospital_photos &&
                 hospital.hospital_photos.map((photo, i) => {
                   return (
-                    <div className="space-y-4" key={i}>
+                    <div className="space-y-4 flex-1" key={i}>
                       <div className="aspect-w-2 aspect-h-2">
                         <img className="object-cover" src={photo} alt="" />
                       </div>
