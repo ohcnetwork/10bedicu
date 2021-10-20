@@ -1,33 +1,6 @@
-import { DEFAULT_AVATAR } from "@lib/constants";
+import { DEFAULT_AVATAR, ICON_TEXT } from "@lib/constants";
+import { colorForIcon } from "@lib/utils";
 import icons from "/data/icons.json";
-
-const iconText = {
-  site_space: "Space",
-  site_electrical: "Electrical",
-  site_internet: "Internet",
-  site_oxygen: "Oxygen",
-  equipment_ordered: "Ordered",
-  equipment_delivered: "Delivered",
-  equipment_installed: "Installed",
-  equipment_staff_trained: "Staff Trained",
-  tech_trained: "IT Staff Trained",
-  tech_hospital_registration: "Hospital Registration",
-  tech_patient_management: "Patient Management",
-  tech_tele_icu_live: "Tele ICU Live",
-};
-
-const colorForIcon = (status) => {
-  switch (status) {
-    case "pending":
-      return "text-red-500";
-    case "in_progress":
-      return "text-yellow-500";
-    case "completed":
-      return "text-green-500";
-    default:
-      return "text-red-500";
-  }
-};
 
 const mapStatuses = (statuses, hospital) => {
   return statuses.map((item, i) => {
@@ -43,7 +16,7 @@ const mapStatuses = (statuses, hospital) => {
             <path d={icons[item]} fill="currentColor" fillRule="nonzero" />
           </svg>
         </span>
-        <div className="font-semibold">{iconText[item]}</div>
+        <div className="font-semibold">{ICON_TEXT[item]}</div>
       </div>
     );
   });
