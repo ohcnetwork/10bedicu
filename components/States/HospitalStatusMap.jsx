@@ -301,7 +301,6 @@ export default function HospitalStatusMap({state, hospitals}) {
         >
           {
             hospitals.filter(hospital => hospital.latitude && hospital.longitude).map((hospital, renderIndex) => {
-              console.log("Hospital at " + hospital.latitude + " " + hospital.longitude);
             return <StatusMarker
             key={hospital.hospital_name + renderIndex}
             lat={hospital.latitude}
