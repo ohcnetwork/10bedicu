@@ -36,7 +36,7 @@ const HospitalListCard = (hospital) => {
             </div>
             <div className="mt-4 flex justify-center md:justify-start">
               <img
-                className="object-cover shadow-lg h-16 w-16 rounded-full"
+                className="object-cover shadow-lg h-32 w-32 rounded-full"
                 onError={(e) => (e.target.src = DEFAULT_AVATAR)}
                 src={hospital.collector_photo || DEFAULT_AVATAR}
                 alt={hospital.collector_name}
