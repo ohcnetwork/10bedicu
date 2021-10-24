@@ -21,16 +21,24 @@ export default function HospitalStatusMap({state, hospitals}) {
         return {
         fillColor: '#42f56f', // call function to get color for state based on the COLI (Cost of Living Index)
         fillOpacity: 0.8,
-        strokeColor: '#42f593',
+        strokeColor: '#ffffff',
         strokeWeight: 1,
         zIndex: 1
         };
       });
       stateLayer.setMap(map)
+      stateLayer.addListener('mouseover', function(event) {
+        stateLayer.revertStyle();
+        stateLayer.overrideStyle(event.feature, {strokeWeight: 4, fillColor: `#42f5df`});
+      });
+      stateLayer.addListener('mouseout', function(event) {
+        stateLayer.revertStyle();
+      });
+      
     }
     console.log(state)
     return (<div>
-      <div className="flex w-full justify-center items-center gap-2 pb-6">
+      <div className="flex flex-wrap w-full justify-center items-center gap-2 pb-6">
         <span className="flex justify-center items-center gap-2">
             <svg className="w-4 h-4" viewBox="0 0 50 50">
               <polygon points="25,0 50,50 0,50" fill="gray" />
@@ -73,29 +81,33 @@ export default function HospitalStatusMap({state, hospitals}) {
 
 
       </div>
-      {(state.lat && state.lng) ? (
+      {(
         <div style={{ height: "75vh", width: "100%" }}>
             <GoogleMapReact
             bootstrapURLKeys={{
             key: GMAP_KEY,
             }}
-            defaultCenter={{
-            lat: 10.148_547_6,
-            lng: 76.500_752_4,
-            }}
-            defaultZoom={8}
-            center={mapState.center}
-            zoom={6}
+            center={
+              state.lat>0 & state.lng>0 ? 
+              mapState.center : 
+              {
+                lat: 23.598_547_6,
+                lng: 78.960_752_4,
+              }}
+            zoom={state.lat > 0 && state.lng > 0 ? 6 : 2}
             onGoogleApiLoaded={onReady}
             options={{
                 restriction: {
-                    latLngBounds: {
+                    latLngBounds: (state.north > 0 && state.south > 0 && state.east > 0 && state.west > 0 ? {
                         north: state.north,
                         south: state.south,
                         east: state.east,
                         west: state.west,
-                      },
-                    strictBounds: false,
+                      } :
+                      {
+                        north:35.63936,	south:6.20453,	west:68.14712,	east:97.34466
+                      }),
+                    strictBounds: true,
                   },
                 styles:
                   [
@@ -289,7 +301,6 @@ export default function HospitalStatusMap({state, hospitals}) {
         >
           {
             hospitals.filter(hospital => hospital.latitude && hospital.longitude).map((hospital, renderIndex) => {
-              console.log("Hospital at " + hospital.latitude + " " + hospital.longitude);
             return <StatusMarker
             key={hospital.hospital_name + renderIndex}
             lat={hospital.latitude}
@@ -300,6 +311,6 @@ export default function HospitalStatusMap({state, hospitals}) {
           } 
         </GoogleMapReact>
       </div>
-    ) : ""}
+    )}
     </div>)
 }
