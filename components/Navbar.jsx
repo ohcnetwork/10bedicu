@@ -256,10 +256,10 @@ function Navbar() {
               d="M4 6h16M4 12h16M4 18h16"
             />
           </svg>
-          <a href="/" className="block mx-auto lg:m-0">
+          <a href="/" className="block mx-auto xl:m-0">
             <img src="/10bedlogo.png" className="h-20 m-3" />
           </a>
-          <ul className=" justify-end gap-9 items-center text-white lg:flex hidden flex-1">
+          <ul className=" justify-end gap-9 items-center text-white xl:flex hidden flex-1">
             {navMap.map((navItem) => {
               return "href" in navItem ? (
                 <NavLink
@@ -279,7 +279,7 @@ function Navbar() {
         </div>
       </nav>
       <div
-        className={`bg-black bg-opacity-90 text-white absolute inset-0 lg:transform  transition max-h-screen flex flex-col ${
+        className={`bg-black bg-opacity-90 text-white absolute inset-0 xl:transform  transition max-h-screen flex flex-col ${
           navbarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
