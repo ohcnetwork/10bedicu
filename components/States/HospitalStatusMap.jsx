@@ -39,7 +39,7 @@ export default function HospitalStatusMap({ state, hospitals }) {
       stateLayer.revertStyle();
     });
   };
-  console.log(state);
+  // console.log(state);
   useEffect(() => {
     if (mapRef.current) {
       const { zoom } = fitBounds(
