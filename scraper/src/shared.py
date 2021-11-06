@@ -26,6 +26,7 @@ def get_data(csv_url, header=False):
     csv_data = list(csv_data)
     return csv_data if header else csv_data[1:]
 
+
 def get_data_header_status(csv_url, header=False):
     # Makes a request to published sheet and
     # parses it as CSV and returns a list of rows
@@ -53,7 +54,6 @@ def number(word):
     except:
         word = 0
     return word
-    
 
 
 def split_entities(data, delimiter="\n"):
@@ -62,5 +62,8 @@ def split_entities(data, delimiter="\n"):
 
     if not data:
         return []
+
+    if not (delimiter in data):
+        delimiter = " "
 
     return data.split(delimiter)
