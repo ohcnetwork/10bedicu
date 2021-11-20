@@ -1,7 +1,7 @@
 import { ICON_TEXT } from "@lib/constants";
 import React from "react";
 import { colorForIcon } from "@lib/utils";
-import { FaCaretDown } from "react-icons/fa";
+import { FaCaretDown, FaMapMarkerAlt } from "react-icons/fa";
 import icons from "/data/icons.json";
 
 const categoryMap = [
@@ -63,7 +63,14 @@ export const StatusPopUp = ({ show, hospital }) => {
       }`}
     >
       <div className="relative p-4">
-        <div className="grid md:grid-cols-3 uppercase w-96">
+        <div className="mb-3 pb-2 border-b">
+          <h1 className="text-gray-500 text-sm font-semibold flex items-center">
+            <FaMapMarkerAlt className="text-base mr-2 text-gray-500" />{" "}
+            {hospital?.hospital_name}
+            <span className="text-gray-400">, {hospital?.district}</span>
+          </h1>
+        </div>
+        <div className="grid md:grid-cols-3 uppercase w-96 mt-2">
           {categoryMap.map(({ category, fields, label }, i) => (
             <div key={category}>
               <h1 className="text-gray-500 mb-4 font-semibold"> {label}</h1>
