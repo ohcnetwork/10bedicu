@@ -144,7 +144,7 @@ function Navbar() {
     return (
       <li key={props.href} className="h-full flex items-center relative">
         <div
-          className="cursor-pointer text-xl border-b-2 border-transparent hover:border-white"
+          className={`cursor-pointer text-xl border-b-2 border-transparent hover:border-white ${open && "border-white"}`}
           href="#"
           onClick={(e) => {
             setOpen(!open);
@@ -169,7 +169,7 @@ function Navbar() {
           </svg>
         </div>
         <div
-          className={`absolute left-0 top-full bg-[#008390] shadow-lg ${
+          className={`absolute mt-1 right-0 top-full bg-[#008390] shadow-lg border ${
             open ? "block" : "hidden"
           }`}
         >
