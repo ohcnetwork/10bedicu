@@ -3,6 +3,7 @@ from config import ROOT_DIR
 import json
 import csv
 import requests
+import re
 
 
 def dump_data(filename, data):
@@ -67,3 +68,19 @@ def split_entities(data, delimiter="\n"):
         delimiter = " "
 
     return data.split(delimiter)
+
+
+def youtube_link(link):
+    # Handle Youtube Links with Domain or Short URLs
+    # Full Domain: https://www.youtube.com/watch?v=ySzgJhKhXks
+    # ID: ySzgJhKhXks
+    # Short URL: https://youtu.be/ySzgJhKhXks
+    # Returns the Video ID
+    try:
+        if "youtube" in link or "youtu.be" in link:
+            match = re.match(
+                "^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*", link)
+            return match.groups()[1]
+        return link
+    except:
+        return link
