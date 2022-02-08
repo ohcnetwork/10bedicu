@@ -1,5 +1,5 @@
 from config import META_SHEET
-from shared import clean_value, get_data, dump_data, number
+from shared import clean_value, get_data, dump_data, number, youtube_link
 
 
 def model_meta(row):
@@ -21,6 +21,7 @@ def model_meta(row):
         "south": number(clean_value(row[10])),
         "west": number(clean_value(row[11])),
         "east": number(clean_value(row[12])),
+        "youtube_link": youtube_link(clean_value(row[13])),
     }
 
 

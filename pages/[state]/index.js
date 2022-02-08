@@ -71,6 +71,24 @@ const StatePage = ({ state, hospitals, pmus }) => {
           </ul>
         </div>
 
+        {state.youtube_link && (
+          <div className="px-5 w-full flex flex-col items-center">
+            <div className="mt-10 mb-5 text-center text-gray-700">
+              <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
+                Field Report
+              </h2>
+            </div>
+            <iframe
+              className="w-full md:w-2/3 h-60 md:h-96 rounded-md"
+              src={`https://www.youtube.com/embed/${state.youtube_link}`}
+              title={`${state.name} - Field Report`}
+              frameBorder={0}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        )}
+
         <div className="mt-20 text-center text-gray-700 border-b-2 pb-2">
           <h2 className="text-3xl font-extrabold tracking-tight sm:text-5xl">
             10 Bed ICU's in {state.name}
