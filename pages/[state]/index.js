@@ -40,9 +40,7 @@ const StatePage = ({ state, hospitals, pmus }) => {
           {state.youtube_link && (
             <div className="px-5 w-full flex flex-col items-center">
               <div className="mt-10 mb-5 text-center text-gray-700">
-                <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
-                  Field Report
-                </h2>
+                <Header id="field_report" title="Field Report" />
               </div>
               <iframe
                 className="w-full md:w-2/3 h-60 md:h-96 rounded-md"
