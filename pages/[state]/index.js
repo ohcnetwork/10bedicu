@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Head from "next/head";
 import {
   statesStaticPaths,
@@ -10,6 +10,7 @@ import PMUListCard from "@components/States/PMUListCard";
 import HospitalListCard from "@components/States/HospitalListCard";
 import Navbar from "@components/Navbar";
 import HospitalStatusMap from "@components/States/HospitalStatusMap";
+import Header from "@components/common/Heading";
 
 const StatePage = ({ state, hospitals, pmus }) => {
   return (
@@ -39,9 +40,7 @@ const StatePage = ({ state, hospitals, pmus }) => {
           {state.youtube_link && (
             <div className="px-5 w-full flex flex-col items-center">
               <div className="mt-10 mb-5 text-center text-gray-700">
-                <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
-                  Field Report
-                </h2>
+                <Header id="field_report" title="Field Report" />
               </div>
               <iframe
                 className="w-full md:w-2/3 h-60 md:h-96 rounded-md"
@@ -58,50 +57,51 @@ const StatePage = ({ state, hospitals, pmus }) => {
             <img alt={state.name} src={state.state_donor_map}></img>
           )}
 
-          <div className="mt-10 text-center text-gray-700">
-            <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
-              Hospital Status
-            </h2>
-          </div>
+          <Header id="hospital_status" title="Hospital Status" />
           <div className="text-lg max-w-5xl mx-auto mt-6 px-2">
             <HospitalStatusMap state={state} hospitals={hospitals} />
           </div>
 
-          <div className="mt-10 text-center text-gray-700">
-            <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
-              Project Management Unit
-            </h2>
-          </div>
+          <Header id="pmu" title="Project Management Unit" />
           <div className="text-lg max-w-5xl mx-auto mt-6 px-2">
             <p className="text-gray-500 text-justify">{state.pmu_summary}</p>
           </div>
-        </div>
 
-        <div className="bg-white mt-10 p-2">
-          <ul
-            role="list"
-            className="space-y-12 sm:grid sm:grid-cols-3 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:gap-x-8"
-          >
-            {pmus.map((pmu, i) => (
-              <li key={i}>
-                <PMUListCard {...pmu} />
-              </li>
-            ))}
-          </ul>
-        </div>
+          <div className="bg-white mt-10 p-2">
+            <ul
+              role="list"
+              className="space-y-12 sm:grid sm:grid-cols-3 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:gap-x-8"
+            >
+              {pmus.map((pmu, i) => (
+                <li key={i}>
+                  <PMUListCard {...pmu} />
+                </li>
+              ))}
+            </ul>
+          </div>
 
-        <div className="mt-20 text-center text-gray-700 border-b-2 pb-2">
-          <h2 className="text-3xl font-extrabold tracking-tight sm:text-5xl">
-            10 Bed ICU's in {state.name}
-          </h2>
-        </div>
-
-        <div className="flex flex-row flex-wrap mx-auto max-w-5xl justify-between mt-4">
-          {hospitals.map((hospital, i) => (
-            <div className="p-4 w-full" key={i}>
-              <HospitalListCard {...hospital} />
+          {state.youtube_link && (
+            <div className="px-5 w-full text-center">
+              <Header id="field_report" title="Field Report" />
+              <iframe
+                className="w-full mx-auto md:w-2/3 h-60 md:h-96 rounded-md"
+                src={`https://www.youtube.com/embed/${state.youtube_link}`}
+                title={`${state.name} - Field Report`}
+                frameBorder={0}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
             </div>
-          ))}
+          )}
+
+          <Header id="icus" title={`10 Bed ICU's in ${state.name}`} />
+          <div className="flex flex-row flex-wrap mx-auto max-w-5xl justify-between mt-4">
+            {hospitals.map((hospital, i) => (
+              <div className="p-4 w-full" key={i}>
+                <HospitalListCard {...hospital} />
+              </div>
+            ))}
+          </div>
         </div>
       </main>
     </div>
