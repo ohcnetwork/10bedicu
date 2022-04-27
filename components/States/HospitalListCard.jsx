@@ -39,7 +39,7 @@ const HospitalListCard = (hospital) => {
     <div>
       {isPhotoGalleryOpen && (
         <HospitalPhotoGallery
-          photos={hospital.hospital_photos}
+          photos={hospital.hospital_gallery}
           onClose={handleClosePhotoGallery}
         />
       )}
