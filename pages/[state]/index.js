@@ -122,6 +122,20 @@ export async function getStaticProps({ params }) {
   };
 }
 
+export function getProps(stateSlug) {
+  const state = findState(stateSlug);
+  const hospitals = hospitalsInState(state.name);
+  const pmus = pmusInState(state.name);
+
+  return {
+    props: {
+      state: state,
+      hospitals: hospitals,
+      pmus: pmus,
+    },
+  };
+}
+
 export async function getStaticPaths() {
   return {
     paths: statesStaticPaths(),
