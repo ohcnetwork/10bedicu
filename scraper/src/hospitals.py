@@ -1,5 +1,5 @@
 from config import HOSPITALS_SHEET
-from shared import clean_value, get_data, dump_data, split_entities
+from shared import clean_value, get_data, dump_data, split_entities, filter_none
 
 
 def model_hospital(row):
@@ -22,18 +22,24 @@ def model_hospital(row):
         "latitude": clean_value(row[12]),
         "longitude": clean_value(row[13]),
         "donors": split_entities(clean_value(row[14])),
-        "site_space": clean_value(clean_value(row[15])),
-        "site_electrical": clean_value(clean_value(row[16])),
-        "site_internet": clean_value(clean_value(row[17])),
-        "site_oxygen": clean_value(clean_value(row[18])),
-        "equipment_ordered": clean_value(clean_value(row[19])),
-        "equipment_delivered": clean_value(clean_value(row[20])),
-        "equipment_installed": clean_value(clean_value(row[21])),
-        "equipment_staff_trained": clean_value(clean_value(row[22])),
-        "tech_trained": clean_value(clean_value(row[23])),
-        "tech_hospital_registration": clean_value(clean_value(row[24])),
-        "tech_patient_management": clean_value(clean_value(row[25])),
-        "tech_tele_icu_live": clean_value(clean_value(row[26])),
+        "site_space": clean_value(row[15]),
+        "site_electrical": clean_value(row[16]),
+        "site_internet": clean_value(row[17]),
+        "site_oxygen": clean_value(row[18]),
+        "equipment_ordered": clean_value(row[19]),
+        "equipment_delivered": clean_value(row[20]),
+        "equipment_installed": clean_value(row[21]),
+        "equipment_staff_trained": clean_value(row[22]),
+        "tech_trained": clean_value(row[23]),
+        "tech_hospital_registration": clean_value(row[24]),
+        "tech_patient_management": clean_value(row[25]),
+        "tech_tele_icu_live": clean_value(row[26]),
+        "hospital_gallery": filter_none([
+            {"label": "Hospital", "src": clean_value(row[27])},
+            {"label": "Work in Progress", "src": clean_value(row[28])},
+            {"label": "Nearly Completion", "src": clean_value(row[29])},
+            {"label": "Completed", "src": clean_value(row[30])}
+        ], "src")
     }
 
 

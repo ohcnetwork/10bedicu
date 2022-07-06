@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { DEFAULT_AVATAR, ICON_TEXT } from "@lib/constants";
 import { colorForIcon } from "@lib/utils";
+import HospitalPhotoGallery from "./HospitalPhotoGallery";
 import icons from "/data/icons.json";
 
 const mapStatuses = (statuses, hospital) => {
@@ -23,8 +25,24 @@ const mapStatuses = (statuses, hospital) => {
 };
 
 const HospitalListCard = (hospital) => {
+  const [isPhotoGalleryOpen, setIsPhotoGalleryOpen] = useState(false);
+
+  const handleShowPhotoGallery = (_) => {
+    setIsPhotoGalleryOpen(true);
+  };
+
+  const handleClosePhotoGallery = (_) => {
+    setIsPhotoGalleryOpen(false);
+  };
+
   return (
     <div>
+      {isPhotoGalleryOpen && (
+        <HospitalPhotoGallery
+          photos={hospital.hospital_gallery}
+          onClose={handleClosePhotoGallery}
+        />
+      )}
       <div className="overflow-hidden rounded-2xl shadow-lg h-full">
         <div className="grid md:grid-cols-3 bg-primary-500">
           <div className="col-span-1 text-white md:pl-6 text-center md:text-left">
@@ -52,7 +70,11 @@ const HospitalListCard = (hospital) => {
               {hospital.hospital_photos &&
                 hospital.hospital_photos.map((photo, i) => {
                   return (
-                    <div className="space-y-4 flex-1" key={i}>
+                    <div
+                      onClick={handleShowPhotoGallery}
+                      className="space-y-4 flex-1 cursor-pointer"
+                      key={i}
+                    >
                       <div className="aspect-w-2 aspect-h-2">
                         <img className="object-cover" src={photo} alt="" />
                       </div>

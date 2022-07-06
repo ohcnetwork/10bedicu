@@ -84,3 +84,7 @@ def youtube_link(link):
         return link
     except:
         return link
+
+
+def filter_none(arr, key):
+    return list(filter(lambda x: (x[key] != "" and x[key] != None), arr))
