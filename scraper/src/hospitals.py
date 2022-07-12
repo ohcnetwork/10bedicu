@@ -35,7 +35,6 @@ def model_hospital(row):
         "tech_patient_management": clean_value(row[25]),
         "tech_tele_icu_live": clean_value(row[26]),
         "hospital_gallery": [
-            # clean_value(row[26]),
             clean_value(row[27]),
             clean_value(row[28]),
             clean_value(row[29]),
@@ -45,7 +44,6 @@ def model_hospital(row):
             clean_value(row[33]),
             clean_value(row[34]),
             clean_value(row[35]),
-            # clean_value(row[36]),
         ]
     }
 
