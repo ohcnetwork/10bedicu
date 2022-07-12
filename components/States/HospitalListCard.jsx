@@ -21,13 +21,11 @@ const mapStatuses = (statuses, hospital) => {
 
 const HospitalListCard = (hospital) => {
   const getImageData = (hospital) => {
-    const hospitalPhoto = hospital.hospital_photos.map((photo) => ({
-      label: hospital.hospital_name,
-      src: photo,
-    }));
-    const hospitalGallery = hospital.hospital_gallery;
+    const hospitalPhoto = hospital.hospital_photos.filter((photo) => photo !== "");
+    const hospitalGallery = hospital.hospital_gallery.filter((photo) => photo !== "");
     return [...hospitalPhoto, ...hospitalGallery];
   };
+
   return (
     <div>
       <div className="overflow-hidden rounded-2xl shadow-lg h-full">

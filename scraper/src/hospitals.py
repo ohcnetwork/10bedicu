@@ -18,7 +18,7 @@ def model_hospital(row):
         "launch_date": clean_value(row[8]),
         "collector_name": clean_value(row[9]),
         "collector_photo": clean_value(row[10]),
-        "hospital_photos": split_entities(clean_value(row[11])),
+        "hospital_photos": split_entities(clean_value(row[11]), ","),
         "latitude": clean_value(row[12]),
         "longitude": clean_value(row[13]),
         "donors": split_entities(clean_value(row[14])),
@@ -34,12 +34,19 @@ def model_hospital(row):
         "tech_hospital_registration": clean_value(row[24]),
         "tech_patient_management": clean_value(row[25]),
         "tech_tele_icu_live": clean_value(row[26]),
-        "hospital_gallery": filter_none([
-            {"label": "Hospital", "src": clean_value(row[27])},
-            {"label": "Work in Progress", "src": clean_value(row[28])},
-            {"label": "Nearly Completion", "src": clean_value(row[29])},
-            {"label": "Completed", "src": clean_value(row[30])}
-        ], "src")
+        "hospital_gallery": [
+            # clean_value(row[26]),
+            clean_value(row[27]),
+            clean_value(row[28]),
+            clean_value(row[29]),
+            clean_value(row[30]),
+            clean_value(row[31]),
+            clean_value(row[32]),
+            clean_value(row[33]),
+            clean_value(row[34]),
+            clean_value(row[35]),
+            # clean_value(row[36]),
+        ]
     }
 
 
