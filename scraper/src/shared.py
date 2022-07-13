@@ -67,7 +67,7 @@ def split_entities(data, delimiter="\n"):
     if not (delimiter in data):
         delimiter = " "
 
-    return data.split(delimiter)
+    return list(map(lambda x: x.strip(), data.split(delimiter)))
 
 
 def youtube_link(link):

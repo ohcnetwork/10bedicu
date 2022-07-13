@@ -1,20 +1,15 @@
 import { useState } from "react";
 import { DEFAULT_AVATAR, ICON_TEXT } from "@lib/constants";
 import { colorForIcon } from "@lib/utils";
-import HospitalPhotoGallery from "./HospitalPhotoGallery";
 import icons from "/data/icons.json";
+import HospitalImageCarosel from "@components/States/HospitalImageCarosel";
 
 const mapStatuses = (statuses, hospital) => {
   return statuses.map((item, i) => {
     return (
       <div key={i} className="py-2 px-2 flex items-center space-x-2">
         <span className={`${colorForIcon(hospital[item])}`}>
-          <svg
-            width="30"
-            height="30"
-            viewBox="0 0 48 48"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+          <svg width="30" height="30" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
             <path d={icons[item]} fill="currentColor" fillRule="nonzero" />
           </svg>
         </span>
@@ -25,33 +20,21 @@ const mapStatuses = (statuses, hospital) => {
 };
 
 const HospitalListCard = (hospital) => {
-  const [isPhotoGalleryOpen, setIsPhotoGalleryOpen] = useState(false);
-
-  const handleShowPhotoGallery = (_) => {
-    setIsPhotoGalleryOpen(true);
-  };
-
-  const handleClosePhotoGallery = (_) => {
-    setIsPhotoGalleryOpen(false);
+  const getImageData = (hospital) => {
+    const hospitalPhoto = hospital.hospital_photos.filter((photo) => photo !== "");
+    const hospitalGallery = hospital.hospital_gallery.filter((photo) => photo !== "");
+    return [...hospitalPhoto, ...hospitalGallery];
   };
 
   return (
     <div>
-      {isPhotoGalleryOpen && (
-        <HospitalPhotoGallery
-          photos={hospital.hospital_gallery}
-          onClose={handleClosePhotoGallery}
-        />
-      )}
       <div className="overflow-hidden rounded-2xl shadow-lg h-full">
         <div className="grid md:grid-cols-3 bg-primary-500">
           <div className="col-span-1 text-white md:pl-6 text-center md:text-left">
             <div className="font-semibold text-lg md:text-2xl mb-2 mt-4 pr-2">
               {hospital.hospital_name}
             </div>
-            <div className="font-semibold text-base mb-2 mt-4 pr-2">
-              {hospital.district} Dt.
-            </div>
+            <div className="font-semibold text-base mb-2 mt-4 pr-2">{hospital.district} Dt.</div>
             <div className="mt-4 flex justify-center md:justify-start">
               <img
                 className="object-cover shadow-lg h-32 w-32 rounded-full"
@@ -67,20 +50,7 @@ const HospitalListCard = (hospital) => {
           </div>
           <div className="col-span-1 bg-white">
             <div className="space-y-1 justify-center flex-wrap items-center flex px-1 py-0">
-              {hospital.hospital_photos &&
-                hospital.hospital_photos.map((photo, i) => {
-                  return (
-                    <div
-                      onClick={handleShowPhotoGallery}
-                      className="space-y-4 flex-1 cursor-pointer"
-                      key={i}
-                    >
-                      <div className="aspect-w-2 aspect-h-2">
-                        <img className="object-cover" src={photo} alt="" />
-                      </div>
-                    </div>
-                  );
-                })}
+              <HospitalImageCarosel imageData={getImageData(hospital)} />
             </div>
           </div>
           {hospital.donors && (
@@ -139,12 +109,7 @@ const HospitalListCard = (hospital) => {
           <div className="grid md:grid-cols-3">
             <div>
               {mapStatuses(
-                [
-                  "site_space",
-                  "site_electrical",
-                  "site_internet",
-                  "site_oxygen",
-                ],
+                ["site_space", "site_electrical", "site_internet", "site_oxygen"],
                 hospital
               )}
             </div>
@@ -175,9 +140,7 @@ const HospitalListCard = (hospital) => {
         <div className="bg-primary-100">
           <div className="px-6 py-4">
             <span>Go Live on:</span>
-            <span className="text-xl ml-2 font-bold">
-              {hospital.launch_date || "TBD"}
-            </span>
+            <span className="text-xl ml-2 font-bold">{hospital.launch_date || "TBD"}</span>
           </div>
         </div>
       </div>
