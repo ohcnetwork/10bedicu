@@ -14,12 +14,14 @@ function Navbar() {
       href: "https://10bedicu.org/",
     },
     {
-      title: "July24-Conf",
-      href: "https://10bedicu.org/july24-conf",
-    },
-    {
       title: "Program States ",
-      sublinks: meta.map((state) => ({ title: state.name, href: state.path === "telangana" ? 'https://10bedicu.org/telangana' : `/${state.path}` })),
+      sublinks: meta.map((state) => ({
+        title: state.name,
+        href:
+          state.path === "telangana"
+            ? "https://10bedicu.org/telangana"
+            : `/${state.path}`,
+      })),
     },
     {
       title: "Tech Platform",
@@ -30,16 +32,12 @@ function Navbar() {
       href: "https://10bedicu.org/#",
     },
     {
-      title: "Donate Now",
-      href: "https://10bedicu.org/donate-now",
-    },
-    {
       title: "Deployment",
       href: "https://10bedicu.org/deployment",
     },
     {
       title: "Our Team",
-      href: "https://10bedicu.org/our-team",
+      href: "https://10bedicu.org/team-%26-partners",
     },
     {
       title: "Training",
@@ -65,12 +63,14 @@ function Navbar() {
       href: "https://10bedicu.org/",
     },
     {
-      title: "July24-Conf",
-      href: "https://10bedicu.org/july24-conf",
-    },
-    {
       title: "Program States ",
-      sublinks: meta.map((state) => ({ title: state.name, href: state.path === "telangana" ? 'https://10bedicu.org/telangana' : `/${state.path}` })),
+      sublinks: meta.map((state) => ({
+        title: state.name,
+        href:
+          state.path === "telangana"
+            ? "https://10bedicu.org/telangana"
+            : `/${state.path}`,
+      })),
     },
     {
       title: "Tech Platform",
@@ -81,10 +81,6 @@ function Navbar() {
       href: "https://10bedicu.org/#",
     },
     {
-      title: "Donate Now",
-      href: "https://10bedicu.org/donate-now",
-    },
-    {
       title: "Deployment",
       href: "https://10bedicu.org/deployment",
     },
@@ -93,7 +89,7 @@ function Navbar() {
       sublinks: [
         {
           title: "Our Team",
-          href: "https://10bedicu.org/our-team",
+          href: "https://10bedicu.org/team-%26-partners",
         },
         {
           title: "Training",
@@ -144,7 +140,9 @@ function Navbar() {
     return (
       <li key={props.href} className="h-full flex items-center relative">
         <div
-          className={`cursor-pointer text-xl border-b-2 border-transparent hover:border-white ${open && "border-white"}`}
+          className={`cursor-pointer text-xl border-b-2 border-transparent hover:border-white ${
+            open && "border-white"
+          }`}
           href="#"
           onClick={(e) => {
             setOpen(!open);
