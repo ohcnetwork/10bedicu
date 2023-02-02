@@ -14,10 +14,6 @@ function Navbar() {
       href: "https://10bedicu.org/",
     },
     {
-      title: "Conf. @Infosys",
-      href: "https://10bedicu.org/conference%40infosys",
-    },
-    {
       title: "Program States ",
       sublinks: meta.map((state) => ({
         title: state.name,
@@ -32,33 +28,64 @@ function Navbar() {
       href: "https://10bedicu.org/tech-platform",
     },
     {
-      title: "Media",
-      href: "https://10bedicu.org/#",
+      title: "Team & Partners",
+      href: "https://10bedicu.org/team-%26-partners",
+    },
+    {
+      title: "Launches & Events",
+      sublinks: [
+        {
+          title: "Telengana Launch",
+          href: "https://10bedicu.org/telangana-launch",
+        },
+        {
+          title: "Manipur Launch",
+          href: "https://10bedicu.org/manipur-launch",
+        },
+        {
+          title: "Mysore TeleICU POC",
+          href: "https://10bedicu.org/mysore-teleicu-poc",
+        },
+        {
+          title: "Conference @Infosys",
+          href: "https://10bedicu.org/conference%40infosys",
+        },
+        {
+          title: "Karnataka Launch",
+          href: "https://10bedicu.org/karnataka-launch",
+        },
+        {
+          title: "Nagaland Launch",
+          href: "https://10bedicu.org/nagaland-launch",
+        },
+      ],
+    },
+    {
+      title: "Doctor Registration",
+      href: "https://10bedicu.org/doctor-registration",
     },
     {
       title: "Deployment",
       href: "https://10bedicu.org/deployment",
     },
     {
-      title: "Our Team",
-      href: "https://10bedicu.org/team-%26-partners",
+      title: "Training",
+      href: undefined,
     },
     {
-      title: "Training",
-      sublinks: [
-        {
-          title: "Video Courses",
-          href: "https://10bedicu.org/video-courses",
-        },
-        {
-          title: "OnePager ICU Topics",
-          href: "https://10bedicu.org/onepager-icu-topics",
-        },
-        {
-          title: "FAQs",
-          href: "https://10bedicu.org/faqs",
-        },
-      ],
+      title: "Video Courses",
+      href: "https://10bedicu.org/video-courses",
+      padded: true,
+    },
+    {
+      title: "OnePager ICU Topics",
+      href: "https://10bedicu.org/onepager-icu-topics",
+      padded: true,
+    },
+    {
+      title: "FAQs",
+      href: "https://10bedicu.org/faqs",
+      padded: true,
     },
   ];
   const navMap = [
@@ -67,10 +94,6 @@ function Navbar() {
       href: "https://10bedicu.org/",
     },
     {
-      title: "Conf. @Infosys",
-      href: "https://10bedicu.org/conference%40infosys",
-    },
-    {
       title: "Program States ",
       sublinks: meta.map((state) => ({
         title: state.name,
@@ -85,23 +108,52 @@ function Navbar() {
       href: "https://10bedicu.org/tech-platform",
     },
     {
-      title: "Media",
-      href: "https://10bedicu.org/#",
+      title: "Team & Partners",
+      href: "https://10bedicu.org/team-%26-partners",
     },
     {
-      title: "Deployment",
-      href: "https://10bedicu.org/deployment",
+      title: "Launches & Events",
+      sublinks: [
+        {
+          title: "Telengana Launch",
+          href: "https://10bedicu.org/telangana-launch",
+        },
+        {
+          title: "Manipur Launch",
+          href: "https://10bedicu.org/manipur-launch",
+        },
+        {
+          title: "Mysore TeleICU POC",
+          href: "https://10bedicu.org/mysore-teleicu-poc",
+        },
+        {
+          title: "Conference @Infosys",
+          href: "https://10bedicu.org/conference%40infosys",
+        },
+        {
+          title: "Karnataka Launch",
+          href: "https://10bedicu.org/karnataka-launch",
+        },
+        {
+          title: "Nagaland Launch",
+          href: "https://10bedicu.org/nagaland-launch",
+        },
+      ],
     },
     {
       title: "More",
       sublinks: [
         {
-          title: "Our Team",
-          href: "https://10bedicu.org/team-%26-partners",
+          title: "Doctor Registration",
+          href: "https://10bedicu.org/doctor-registration",
+        },
+        {
+          title: "Deployment",
+          href: "https://10bedicu.org/deployment",
         },
         {
           title: "Training",
-          href: "",
+          href: undefined,
         },
         {
           title: "Video Courses",
