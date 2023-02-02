@@ -14,6 +14,10 @@ function Navbar() {
       href: "https://10bedicu.org/",
     },
     {
+      title: "Conf. @Infosys",
+      href: "https://10bedicu.org/conference%40infosys",
+    },
+    {
       title: "Program States ",
       sublinks: meta.map((state) => ({
         title: state.name,
@@ -61,6 +65,10 @@ function Navbar() {
     {
       title: "Home",
       href: "https://10bedicu.org/",
+    },
+    {
+      title: "Conf. @Infosys",
+      href: "https://10bedicu.org/conference%40infosys",
     },
     {
       title: "Program States ",
