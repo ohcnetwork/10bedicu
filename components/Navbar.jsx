@@ -69,11 +69,7 @@ function Navbar() {
       href: "https://10bedicu.org/deployment",
     },
     {
-      title: "Training",
-      href: undefined,
-    },
-    {
-      title: "Video Courses",
+      title: "Training Video Courses",
       href: "https://10bedicu.org/video-courses",
       padded: true,
     },
