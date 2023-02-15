@@ -37,19 +37,24 @@ const StatePage = ({ state, hospitals, pmus }) => {
             </div>
           </div>
 
-          {state.youtube_link && (
+          {state.youtube_links && (
             <div className="px-5 w-full flex flex-col items-center">
               <div className="mt-10 mb-5 text-center text-gray-700">
                 <Header id="field_report" title="Field Report" />
               </div>
-              <iframe
-                className="w-full md:w-2/3 h-60 md:h-96 rounded-md"
-                src={`https://www.youtube.com/embed/${state.youtube_link}`}
-                title={`${state.name} - Field Report`}
-                frameBorder={0}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
+              {
+                (state.youtube_links.map((link) => (
+                  <iframe
+                    key={link}
+                    className="w-full md:w-2/3 h-60 md:h-96 rounded-md my-3"
+                    src={`https://www.youtube.com/embed/${link}`}
+                    title={`${state.name} - Field Report`}
+                    frameBorder={0}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                )))
+              }
             </div>
           )}
 
@@ -79,20 +84,6 @@ const StatePage = ({ state, hospitals, pmus }) => {
               ))}
             </ul>
           </div>
-
-          {state.youtube_link && (
-            <div className="px-5 w-full text-center">
-              <Header id="field_report" title="Field Report" />
-              <iframe
-                className="w-full mx-auto md:w-2/3 h-60 md:h-96 rounded-md"
-                src={`https://www.youtube.com/embed/${state.youtube_link}`}
-                title={`${state.name} - Field Report`}
-                frameBorder={0}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
-          )}
 
           <Header id="icus" title={`10 Bed ICU's in ${state.name}`} />
           <div className="flex flex-row flex-wrap mx-auto max-w-5xl justify-between mt-4">
