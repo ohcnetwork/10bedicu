@@ -10,7 +10,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: main
+          fetch-depth: 0
+          token: ${{ secrets.GIT_ACCESS_TOKEN }}
       - name: Create local changes
         run: |
           pip3 install -r scraper/requirements.txt
@@ -22,12 +23,8 @@ jobs:
           python3 scraper/src/status.py
       - name: Commit files
         run: |
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.email "matthewzalex@gmail.com"
           git config --local user.name "github-actions[bot]"
           git add .
           git diff --staged --quiet || git commit -am "🌍 Update JSON - $(date -d '+5 hours +30 minutes' +'%d %b %Y | %I:%M %p')"
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: main
+          git push
