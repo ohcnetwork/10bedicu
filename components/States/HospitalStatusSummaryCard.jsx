@@ -85,19 +85,25 @@ const HospitalStatusSummaryCard = (hospitals) => {
           </div>
         </div>
         <div className="px-4">
-          <div className="grid md:grid-cols-3 uppercase mt-2 font-semibold text-gray-600">
-            <div>Site</div>
-            <div>Equipment</div>
-            <div>Technology</div>
-          </div>
-          <div className="grid md:grid-cols-3">
-            <div className="pr-4">
+          <div className="grid md:grid-cols-3 divide-x-2 divide-gray-200">
+            <div className="pt-1 pr-2">
+              <span className="pt-1 ml-2 uppercase font-semibold text-gray-600">
+                Site
+              </span>
               {mapStatuses(SUMMARY_ATTRIBUTE_KEYS[0], summary)}
             </div>
-            <div className="pr-4">
+            <div className="pt-1 pr-2">
+              <span className="pt-1 ml-2 uppercase font-semibold text-gray-600">
+                Equipment
+              </span>
               {mapStatuses(SUMMARY_ATTRIBUTE_KEYS[1], summary)}
             </div>
-            <div>{mapStatuses(SUMMARY_ATTRIBUTE_KEYS[2], summary)}</div>
+            <div className="pt-1">
+              <span className="pt-1 ml-2 uppercase font-semibold text-gray-600">
+                Technology
+              </span>
+              {mapStatuses(SUMMARY_ATTRIBUTE_KEYS[2], summary)}
+            </div>
           </div>
         </div>
       </div>
