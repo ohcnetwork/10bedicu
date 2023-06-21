@@ -11,6 +11,7 @@ import HospitalListCard from "@components/States/HospitalListCard";
 import Navbar from "@components/Navbar";
 import HospitalStatusMap from "@components/States/HospitalStatusMap";
 import Header from "@components/common/Heading";
+import HospitalStatusSummaryCard from "@components/States/HospitalStatusSummaryCard";
 
 const StatePage = ({ state, hospitals, pmus }) => {
   return (
@@ -42,19 +43,17 @@ const StatePage = ({ state, hospitals, pmus }) => {
               <div className="mt-10 mb-5 text-center text-gray-700">
                 <Header id="field_report" title="Field Report" />
               </div>
-              {
-                (state.youtube_links.map((link) => (
-                  <iframe
-                    key={link}
-                    className="w-full md:w-2/3 h-60 md:h-96 rounded-md my-3"
-                    src={`https://www.youtube.com/embed/${link}`}
-                    title={`${state.name} - Field Report`}
-                    frameBorder={0}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                )))
-              }
+              {state.youtube_links.map((link) => (
+                <iframe
+                  key={link}
+                  className="w-full md:w-2/3 h-60 md:h-96 rounded-md my-3"
+                  src={`https://www.youtube.com/embed/${link}`}
+                  title={`${state.name} - Field Report`}
+                  frameBorder={0}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              ))}
             </div>
           )}
 
@@ -63,8 +62,9 @@ const StatePage = ({ state, hospitals, pmus }) => {
           )}
 
           <Header id="hospital_status" title="Hospital Status" />
-          <div className="text-lg max-w-5xl mx-auto mt-6 px-2">
+          <div className="space-y-8 text-lg max-w-5xl mx-auto mt-6 px-2">
             <HospitalStatusMap state={state} hospitals={hospitals} />
+            <HospitalStatusSummaryCard {...hospitals} />
           </div>
 
           <Header id="pmu" title="Project Management Unit" />
