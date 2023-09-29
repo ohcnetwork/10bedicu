@@ -12,14 +12,20 @@ import Navbar from "@components/Navbar";
 import HospitalStatusMap from "@components/States/HospitalStatusMap";
 import Header from "@components/common/Heading";
 import HospitalStatusSummaryCard from "@components/States/HospitalStatusSummaryCard";
+import { useRouter } from "next/router";
+import AssetDetailsModal from "@components/AssetDetailsModal";
 
 const StatePage = ({ state, hospitals, pmus }) => {
+  const router = useRouter();
+  const { asset } = router.query;
+
   return (
     <div className="flex flex-col min-h-screen pb-2">
       <Head>
         <title>{state.name} | 10 Bed ICU </title>
       </Head>
       <Navbar />
+      <AssetDetailsModal assetId={asset} state_api_url={state.api_url} />
       <main className="mx-auto max-w-5xl flex flex-col items-center justify-center w-full flex-1">
         <div className="w-full">
           <div className="p-3 text-center">
