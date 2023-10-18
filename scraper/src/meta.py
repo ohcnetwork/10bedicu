@@ -22,6 +22,7 @@ def model_meta(row):
         "west": number(clean_value(row[11])),
         "east": number(clean_value(row[12])),
         "youtube_links": [youtube_link(clean_value(link)) for link in row[13].split(",")],
+        "api_url": clean_value(row[14])
     }
 
 
