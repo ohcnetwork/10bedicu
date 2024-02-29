@@ -200,9 +200,12 @@ function Navbar() {
             open && "border-white"
           }`}
           href="#"
-          onMouseOutCapture={(e) => {
+          onMouseOverCapture={(e) => {
             setOpen(!open);
             
+          }}
+          onMouseOutCapture={(e)=>{
+            setOpen(!open);
           }}
         >
           {props.title}{" "}
