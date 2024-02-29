@@ -202,11 +202,8 @@ function Navbar() {
           href="#"
           onMouseOverCapture={(e) => {
             setOpen(!open);
-            
           }}
-          onMouseOutCapture={(e)=>{
-            setOpen(!open);
-          }}
+          
         >
           {props.title}{" "}
           <svg
