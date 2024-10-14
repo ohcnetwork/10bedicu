@@ -14,13 +14,15 @@ jobs:
           token: ${{ secrets.GIT_ACCESS_TOKEN }}
       - name: Create local changes
         run: |
-          pip3 install -r scraper/requirements.txt
-          python3 scraper/src/meta.py
-          python3 scraper/src/pmu.py
-          python3 scraper/src/donors.py
-          python3 scraper/src/hospitals.py
-          python3 scraper/src/associate.py
-          python3 scraper/src/status.py
+          python3 -m venv venv
+          source venv/bin/activate
+          pip  install -r scraper/requirements.txt
+          python scraper/src/meta.py
+          python scraper/src/pmu.py
+          python scraper/src/donors.py
+          python scraper/src/hospitals.py
+          python scraper/src/associate.py
+          python scraper/src/status.py
       - name: Commit files
         run: |
           git config --local user.email "matthewzalex@gmail.com"
