@@ -2,6 +2,7 @@
   "private": true,
   "scripts": {
     "dev": "set NODE_PATH=. && next dev -p 4000",
+    "export": "next export",
     "build": "set NODE_PATH=. && next build",
     "start": "next start"
   },
