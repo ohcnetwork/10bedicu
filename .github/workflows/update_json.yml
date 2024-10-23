@@ -12,18 +12,31 @@ jobs:
         with:
           fetch-depth: 0
           token: ${{ secrets.GIT_ACCESS_TOKEN }}
+
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: .venv
+          key: ${{ runner.os }}-pip-${{ hashFiles('scraper/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Setup Python
+        run: |
+          python3 -m venv .venv
+          source .venv/bin/activate
+          pip install -r scraper/requirements.txt
+
       - name: Create local changes
         run: |
-          rm -rf venv
-          python3 -m venv venv
-          source venv/bin/activate
-          pip  install -r scraper/requirements.txt
+          source .venv/bin/activate
           python scraper/src/meta.py
           python scraper/src/pmu.py
           python scraper/src/donors.py
           python scraper/src/hospitals.py
           python scraper/src/associate.py
           python scraper/src/status.py
+
       - name: Commit files
         run: |
           git config --local user.email "matthewzalex@gmail.com"
