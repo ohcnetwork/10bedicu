@@ -193,12 +193,14 @@ function Navbar() {
 
   const NavDropdownLink = (props) => {
     const [open, setOpen] = useState(false);
+    const handleMouseEnter = () => setOpen(true);
+    const handleMouseLeave = () => setOpen(false);
     return (
-      <li key={props.href} className="h-full flex items-center relative">
+      <li key={props.href} className="h-full flex items-center relative" onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}>
         <div
-          className={`cursor-pointer text-xl border-b-2 border-transparent hover:border-white ${
-            open && "border-white"
-          }`}
+          className={`cursor-pointer text-xl border-b-2 border-transparent hover:border-white ${open && "border-white"
+            }`}
           href="#"
           onClick={(e) => {
             setOpen(!open);
@@ -207,9 +209,8 @@ function Navbar() {
           {props.title}{" "}
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className={`h-6 w-6 inline transition ${
-              open ? "transform rotate-180" : ""
-            }`}
+            className={`h-6 w-6 inline transition ${open ? "transform rotate-180" : ""
+              }`}
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -223,17 +224,15 @@ function Navbar() {
           </svg>
         </div>
         <div
-          className={`absolute mt-1 right-0 top-full bg-[#008390] shadow-lg border ${
-            open ? "block" : "hidden"
-          }`}
+          className={`absolute mt-1 right-0 top-full bg-[#008390] shadow-lg border ${open ? "block" : "hidden"
+            }`}
         >
           <ul>
             {props.sublinks.map((sublink) => (
               <li key={sublink.href} className="text-left w-60">
                 <a
-                  className={`text-xl py-2 px-4 hover:bg-[#005b64] block ${
-                    sublink.padded ? "pl-8" : ""
-                  }`}
+                  className={`text-xl py-2 px-4 hover:bg-[#005b64] block ${sublink.padded ? "pl-8" : ""
+                    }`}
                   href={sublink.href}
                 >
                   {sublink.title}
@@ -260,9 +259,8 @@ function Navbar() {
           {props.title}{" "}
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className={`h-6 w-6 inline transition ${
-              open ? "transform rotate-180" : ""
-            }`}
+            className={`h-6 w-6 inline transition ${open ? "transform rotate-180" : ""
+              }`}
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -333,9 +331,8 @@ function Navbar() {
         </div>
       </nav>
       <div
-        className={`bg-black bg-opacity-90 text-white absolute inset-0 xl:transform  transition max-h-screen flex flex-col ${
-          navbarOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
+        className={`bg-black bg-opacity-90 text-white absolute inset-0 xl:transform  transition max-h-screen flex flex-col ${navbarOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
